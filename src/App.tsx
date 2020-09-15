@@ -7,8 +7,8 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-import logo from "./unnamed.jpg"; // Tell webpack this JS file uses this image
-import avatar from "./unnamed.png";
+import logo from "./photo_about.jpg"; // Tell webpack this JS file uses this image
+import avatar from "./photo_contacts.png";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -23,16 +23,25 @@ export default function BasicExample() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
+        <ul
+          style={{
+            backgroundColor: "red",
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
+          <h1>
             <Link to="/">Home</Link>
-          </li>
-          <li>
+          </h1>
+          <h1>
+            <Link to="/massages">Massages</Link>
+          </h1>
+          <h1>
             <Link to="/about">About</Link>
-          </li>
-          <li>
+          </h1>
+          <h1>
             <Link to="/contacts">Contacts</Link>
-          </li>
+          </h1>
         </ul>
 
         <hr />
@@ -46,13 +55,17 @@ export default function BasicExample() {
         */}
         <Switch>
           <Route exact path="/">
-            <HomeList />
+            <Home />
           </Route>
 
-          <Route path="/about">
+          <Route path="/massages">
+            <MassagesRoute />
+          </Route>
+
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route path="/contacts">
+          <Route exact path="/contacts">
             <Contacts />
           </Route>
         </Switch>
@@ -64,11 +77,11 @@ export default function BasicExample() {
 // You can think of these components as "pages"
 // in your app.
 
-function HomeList() {
+function MassagesRoute() {
   let { path, url } = useRouteMatch();
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Massages</h1>
       <ul>
         <li>
           <Link to={`${url}/vietnamese`}>Vietnamese massage </Link>
@@ -77,7 +90,7 @@ function HomeList() {
           <Link to={`${url}/relaxing`}>Relaxing massage</Link>
         </li>
         <li>
-          <Link to={`${url}/relaxing`}>Belly massage</Link>
+          <Link to={`${url}/belly`}>Belly massage</Link>
         </li>
       </ul>
 
@@ -92,11 +105,11 @@ function HomeList() {
 }
 
 function Home() {
-  let homeId = useParams();
-
+  let { homeId } = useParams() as any;
   return (
     <div>
       <h3>{homeId}</h3>
+      <h1>Home</h1>
     </div>
   );
 }
