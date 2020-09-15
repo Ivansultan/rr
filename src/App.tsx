@@ -31,9 +31,6 @@ export default function BasicExample() {
           }}
         >
           <h1>
-            <Link to="/">Home</Link>
-          </h1>
-          <h1>
             <Link to="/massages">Massages</Link>
           </h1>
           <h1>
@@ -54,18 +51,14 @@ export default function BasicExample() {
           of them to render at a time
         */}
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-
           <Route path="/massages">
             <MassagesRoute />
           </Route>
 
-          <Route exact path="/about">
+          <Route path="/about">
             <About />
           </Route>
-          <Route exact path="/contacts">
+          <Route path="/contacts">
             <Contacts />
           </Route>
         </Switch>
@@ -81,35 +74,58 @@ function MassagesRoute() {
   let { path, url } = useRouteMatch();
   return (
     <div>
-      <h1>Massages</h1>
-      <ul>
-        <li>
+      <ul style={{ display: "flex", justifyContent: "space-around" }}>
+        <h3>
           <Link to={`${url}/vietnamese`}>Vietnamese massage </Link>
-        </li>
-        <li>
+        </h3>
+        <h3>
           <Link to={`${url}/relaxing`}>Relaxing massage</Link>
-        </li>
-        <li>
+        </h3>
+        <h3>
           <Link to={`${url}/belly`}>Belly massage</Link>
-        </li>
+        </h3>
       </ul>
 
       <Switch>
         <Route exact path={path}></Route>
-        <Route path={`${path}/:homeId`}>
-          <Home />
+        <Route path={`${path}/:massageId`}>
+          <Massages />
         </Route>
       </Switch>
     </div>
   );
 }
 
-function Home() {
-  let { homeId } = useParams() as any;
+type MassageType = "vietnamese" | "relaxing" | "belly";
+type Massage = { title: string; description: string; image: string };
+type Massages = { [M in MassageType]: Massage };
+
+function Massages() {
+  let massageId = (useParams() as any).massageId as MassageType;
+  const data: Massages = {
+    vietnamese: {
+      title: "Массаж всего тела",
+      description: "aljadsjflasjfasdjflasjfl;sjf;s",
+      image: require("./photo_relax(1).png"),
+      // or image: ""
+    },
+    relaxing: {
+      title: "Расслабляющий массаж",
+      description: "aljadsjflasjfasdjflasjfl;sjf;s",
+      image: "",
+    },
+    belly: {
+      title: "Массаж живота",
+      description: "aljadsjflasjfasdjflasjfl;sjf;s",
+      image: "",
+    },
+  };
+  const { title, description, image } = data[massageId];
   return (
     <div>
-      <h3>{homeId}</h3>
-      <h1>Home</h1>
+      <h3>{title}</h3>
+      <img src={image} alt="Фото" />
+      <div>{description}</div>
     </div>
   );
 }
