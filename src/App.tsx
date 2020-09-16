@@ -82,7 +82,7 @@ function MassagesRoute() {
           <Link to={`${url}/relaxing`}>Relaxing massage</Link>
         </h3>
         <h3>
-          <Link to={`${url}/belly`}>Belly massage</Link>
+          <Link to={`${url}/visceral`}>Visceral chiropractic</Link>
         </h3>
       </ul>
 
@@ -96,7 +96,7 @@ function MassagesRoute() {
   );
 }
 
-type MassageType = "vietnamese" | "relaxing" | "belly";
+type MassageType = "vietnamese" | "relaxing" | "visceral";
 type Massage = { title: string; description: string; image: string };
 type Massages = { [M in MassageType]: Massage };
 
@@ -105,18 +105,18 @@ function Massages() {
   const data: Massages = {
     vietnamese: {
       title: "Массаж всего тела",
-      description: "aljadsjflasjfasdjflasjfl;sjf;s",
-      image: require("./photo_relax(1).png"),
-      // or image: ""
+      description: "Есть где разгуляться",
+      image: require("./photo_relax(1).jpg"),
+      // or image: "url"
     },
     relaxing: {
       title: "Расслабляющий массаж",
-      description: "aljadsjflasjfasdjflasjfl;sjf;s",
-      image: "",
+      description: "Главное не задушить",
+      image: require("./photo_relax(2).jpg"),
     },
-    belly: {
+    visceral: {
       title: "Массаж живота",
-      description: "aljadsjflasjfasdjflasjfl;sjf;s",
+      description: "Худеем вместе",
       image: "",
     },
   };
