@@ -6,9 +6,10 @@ import {
   Link,
   useParams,
   useRouteMatch,
+  Redirect,
 } from "react-router-dom";
-import logo from "./photo_about.jpg"; // Tell webpack this JS file uses this image
-import avatar from "./photo_contacts.png";
+import logo from "./images/photo_about.jpg"; // Tell webpack this JS file uses this image
+import avatar from "./images/photo_contacts.png";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -23,6 +24,7 @@ export default function BasicExample() {
   return (
     <Router>
       <div>
+        {/* {<OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />} */}
         <ul
           style={{
             backgroundColor: "red",
@@ -31,13 +33,17 @@ export default function BasicExample() {
           }}
         >
           <h1>
-            <Link to="/massages">Massages</Link>
+            <OldSchoolMenuLink
+              to="/massages"
+              label="Massages"
+              // activeOnlyWhenExact={true}
+            />
           </h1>
           <h1>
-            <Link to="/about">About</Link>
+            <OldSchoolMenuLink to="/about" label={"About"} />
           </h1>
           <h1>
-            <Link to="/contacts">Contacts</Link>
+            <OldSchoolMenuLink to="/contacts" label={"Contacts"} />
           </h1>
         </ul>
 
@@ -50,6 +56,9 @@ export default function BasicExample() {
           you have multiple routes, but you want only one
           of them to render at a time
         */}
+
+        <Redirect to="/massages" />
+
         <Switch>
           <Route path="/massages">
             <MassagesRoute />
@@ -72,51 +81,115 @@ export default function BasicExample() {
 
 function MassagesRoute() {
   let { path, url } = useRouteMatch();
-  return (
-    <div>
-      <ul style={{ display: "flex", justifyContent: "space-around" }}>
-        <h3>
-          <Link to={`${url}/vietnamese`}>Vietnamese massage </Link>
-        </h3>
-        <h3>
-          <Link to={`${url}/relaxing`}>Relaxing massage</Link>
-        </h3>
-        <h3>
-          <Link to={`${url}/visceral`}>Visceral chiropractic</Link>
-        </h3>
-      </ul>
 
-      <Switch>
-        <Route exact path={path}></Route>
-        <Route path={`${path}/:massageId`}>
-          <Massages />
-        </Route>
-      </Switch>
+  // console.log("path", path);
+  return (
+    <Router>
+      <div>
+        <ul style={{ display: "flex", justifyContent: "space-around" }}>
+          <h3>
+            <NewSchoolMenuLink
+              to={`${url}/japanese`}
+              label={"Japanese massage"}
+              activeOnlyWhenExact={true}
+            />
+          </h3>
+          <h3>
+            <NewSchoolMenuLink
+              to={`${url}/vietnamese`}
+              label={"Vietnamese massage"}
+            />
+          </h3>
+          <h3>
+            <NewSchoolMenuLink
+              to={`${url}/relaxing`}
+              label={"Relaxing massage"}
+            />
+          </h3>
+          <h3>
+            <NewSchoolMenuLink
+              to={`${url}/visceral`}
+              label={"Visceral chiropractic"}
+            />
+          </h3>
+        </ul>
+
+        <Switch>
+          {/* <Route exact path={path}> */}
+          <Route path={`${path}/:massageId`}>
+            <Massages />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact,
+  });
+
+  // console.log("math", match);
+
+  return (
+    <div className={match ? "active" : ""}>
+      {/* {match && "> "} */}
+      <Link to={to}>
+        <div style={{ color: match ? "orange" : "purple" }}>{label} </div>
+      </Link>
     </div>
   );
 }
 
-type MassageType = "vietnamese" | "relaxing" | "visceral";
+function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact,
+  });
+
+  return (
+    <div className={match ? "active" : ""}>
+      {/* {match && "> "} */}
+      <Link to={to}>
+        <div style={{ color: match ? "orange" : "purple" }}>{label} </div>
+      </Link>
+    </div>
+  );
+}
+
+type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type Massage = { title: string; description: string; image: string };
 type Massages = { [M in MassageType]: Massage };
 
 function Massages() {
   let massageId = (useParams() as any).massageId as MassageType;
+  console.log("useParams", useParams());
   const data: Massages = {
+    japanese: {
+      title: "",
+      description:
+        "Юмейхо терапия 1 ступень (японская техника массажа) Построена на основе биомеханики тела и влиянии смещения центра тяжести костей таза, на здоровье человека. Юмейхо терапия включает в себя лимфатический массаж всего тела, мягкую мануальную терапию и проработку мышц всего тела.",
+      image: "",
+    },
+
     vietnamese: {
-      title: "Массаж всего тела",
-      description: "Есть где разгуляться",
-      image: require("./photo_relax(1).jpg"),
+      title: "",
+      description:
+        "Юмейхо терапия 2 ступень (вьетнамская техника массажа) Это система специально подобранных приемов обдавливания, скруток и растяжек (основанных на приемах боевых искусств), направленных на глубокую проработку мышц и связок, снятия напряжения со всего тела и увеличения объема движения суставов.",
+      image: require("./images/photo_relax(1).jpg"),
       // or image: "url"
     },
     relaxing: {
-      title: "Расслабляющий массаж",
-      description: "Главное не задушить",
-      image: require("./photo_relax(2).jpg"),
+      title: "",
+      description: "",
+      image: require("./images/photo_relax(2).jpg"),
     },
     visceral: {
-      title: "Массаж живота",
-      description: "Худеем вместе",
+      title: "",
+      description:
+        "Висцеральная хиропрактика(массаж живота)Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них.Помогает справляться с широким спектром ослабления функций органов всего тела.   Массаж живота устраняет: 1. Дисфункции работы желудочно-кишечного тракта 2. Патологии работы почек 3. Нарушение работы половой системы у мужчин и женщин 4. Плохая циркуляция крови 5. Недуги органов дыхания 6. Воспаление поджелудочной железы, ослабление работы печени и желчного пузыря.  Улучшает: 1. Работу сердечно-сосудистой системы 2. Метаболизм 3. Корректирует избыточный вес 4. Психоэмоциональное состояние 5. Профилактика простудных заболеваний и стимуляция иммунной системы.",
       image: "",
     },
   };
