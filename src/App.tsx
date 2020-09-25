@@ -8,8 +8,8 @@ import {
   useRouteMatch,
   Redirect,
 } from "react-router-dom";
-import logo from "./images/photo_about.jpg"; // Tell webpack this JS file uses this image
-import avatar from "./images/photo_contacts.png";
+import logo from "./images/about.jpg"; // Tell webpack this JS file uses this image
+import avatar from "./images/contacts.png";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -20,32 +20,40 @@ import avatar from "./images/photo_contacts.png";
 // making sure things like the back button and bookmarks
 // work properly.
 
-export default function BasicExample() {
+export default function App() {
   return (
     <Router>
-      <div>
+      <div
+        style={{
+          backgroundColor: "gray",
+        }}
+      >
         {/* {<OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />} */}
-        <ul
+        <div
           style={{
-            backgroundColor: "red",
+            backgroundColor: "brown",
             display: "flex",
+            //alignItems: "center",
             justifyContent: "space-around",
+            position: "fixed",
+            width: "100%",
+            marginTop: "15px",
           }}
         >
-          <h1>
+          <h2 style={{ backgroundColor: "yellowgreen" }}>
             <OldSchoolMenuLink
               to="/massages"
               label="Massages"
               // activeOnlyWhenExact={true}
             />
-          </h1>
-          <h1>
+          </h2>
+          <h2 style={{ backgroundColor: "whitesmoke" }}>
             <OldSchoolMenuLink to="/about" label={"About"} />
-          </h1>
-          <h1>
+          </h2>
+          <h2 style={{ backgroundColor: "gray" }}>
             <OldSchoolMenuLink to="/contacts" label={"Contacts"} />
-          </h1>
-        </ul>
+          </h2>
+        </div>
 
         <hr />
 
@@ -85,34 +93,46 @@ function MassagesRoute() {
   // console.log("path", path);
   return (
     <Router>
-      <div>
-        <ul style={{ display: "flex", justifyContent: "space-around" }}>
-          <h3>
+      <div
+        style={{
+          //display: "flex",
+          marginTop: "110px",
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: "blue",
+            display: "flex",
+            justifyContent: "space-around",
+            maxHeight: "100%",
+          }}
+        >
+          <div style={{ backgroundColor: "white" }}>
             <NewSchoolMenuLink
               to={`${url}/japanese`}
               label={"Japanese massage"}
               activeOnlyWhenExact={true}
             />
-          </h3>
-          <h3>
+          </div>
+          <div style={{ backgroundColor: "yellow" }}>
             <NewSchoolMenuLink
               to={`${url}/vietnamese`}
               label={"Vietnamese massage"}
             />
-          </h3>
-          <h3>
+          </div>
+          <div style={{ backgroundColor: "red" }}>
             <NewSchoolMenuLink
               to={`${url}/relaxing`}
               label={"Relaxing massage"}
             />
-          </h3>
-          <h3>
+          </div>
+          <div style={{ backgroundColor: "lightGreen" }}>
             <NewSchoolMenuLink
               to={`${url}/visceral`}
               label={"Visceral chiropractic"}
             />
-          </h3>
-        </ul>
+          </div>
+        </div>
 
         <Switch>
           {/* <Route exact path={path}> */}
@@ -120,6 +140,12 @@ function MassagesRoute() {
             <Massages />
           </Route>
         </Switch>
+
+        {/*<img
+          alt="logo"
+          src={require("./images/photo_home.jpg")}
+          style={{ width: "100%" }}
+       /> */}
       </div>
     </Router>
   );
@@ -153,14 +179,22 @@ function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
     <div className={match ? "active" : ""}>
       {/* {match && "> "} */}
       <Link to={to}>
-        <div style={{ color: match ? "orange" : "purple" }}>{label} </div>
+        <div
+          style={{
+            color: match ? "orange" : "purple",
+            margin: "10px",
+            textAlign: "center",
+          }}
+        >
+          {label}{" "}
+        </div>
       </Link>
     </div>
   );
 }
 
 type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
-type Massage = { title: string; description: string; image: string };
+type Massage = { title: string; description: string; images: any[] };
 type Massages = { [M in MassageType]: Massage };
 
 function Massages() {
@@ -171,33 +205,58 @@ function Massages() {
       title: "",
       description:
         "Юмейхо терапия 1 ступень (японская техника массажа) Построена на основе биомеханики тела и влиянии смещения центра тяжести костей таза, на здоровье человека. Юмейхо терапия включает в себя лимфатический массаж всего тела, мягкую мануальную терапию и проработку мышц всего тела.",
-      image: "",
+      images: [
+        require("./images/japanese (1).png"),
+        require("./images/japanese (2).jpg"),
+        require("./images/japanese (3).jpg"),
+        require("./images/japanese (4).jpg"),
+      ],
     },
 
     vietnamese: {
       title: "",
       description:
         "Юмейхо терапия 2 ступень (вьетнамская техника массажа) Это система специально подобранных приемов обдавливания, скруток и растяжек (основанных на приемах боевых искусств), направленных на глубокую проработку мышц и связок, снятия напряжения со всего тела и увеличения объема движения суставов.",
-      image: require("./images/photo_relax(1).jpg"),
+      images: [
+        require("./images/vietnamese (1).jpg"),
+        require("./images/vietnamese (2).jpg"),
+        require("./images/vietnamese (3).jpg"),
+        require("./images/vietnamese (4).jpg"),
+        require("./images/vietnamese (5).jpg"),
+      ],
       // or image: "url"
     },
     relaxing: {
       title: "",
       description: "",
-      image: require("./images/photo_relax(2).jpg"),
+      images: [
+        require("./images/relaxing (1).jpg"),
+        require("./images/relaxing (2).jpg"),
+        require("./images/relaxing (3).jpg"),
+        require("./images/relaxing (4).jpg"),
+      ],
     },
     visceral: {
       title: "",
       description:
         "Висцеральная хиропрактика(массаж живота)Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них.Помогает справляться с широким спектром ослабления функций органов всего тела.   Массаж живота устраняет: 1. Дисфункции работы желудочно-кишечного тракта 2. Патологии работы почек 3. Нарушение работы половой системы у мужчин и женщин 4. Плохая циркуляция крови 5. Недуги органов дыхания 6. Воспаление поджелудочной железы, ослабление работы печени и желчного пузыря.  Улучшает: 1. Работу сердечно-сосудистой системы 2. Метаболизм 3. Корректирует избыточный вес 4. Психоэмоциональное состояние 5. Профилактика простудных заболеваний и стимуляция иммунной системы.",
-      image: "",
+      images: [
+        require("./images/visceral (1).jpg"),
+        require("./images/visceral (2).jpg"),
+        require("./images/visceral (3).jpg"),
+        require("./images/visceral (4).jpg"),
+      ],
     },
   };
-  const { title, description, image } = data[massageId];
+  const { title, description, images } = data[massageId];
+
   return (
     <div>
       <h3>{title}</h3>
-      <img src={image} alt="Фото" />
+      {images.map((image) => {
+        return <img src={image}>{}</img>;
+      })}
+      {/* <img src={image} alt="Фото" /> */}
       <div>{description}</div>
     </div>
   );
@@ -207,7 +266,13 @@ function About() {
   return (
     <div>
       <h1>About</h1>
-      <img src={logo} alt="Logo" />
+      <div>
+        <img
+          style={{ maxWidth: "40%", maxHeight: "40%" }}
+          src={logo}
+          alt="Logo"
+        />
+      </div>
       <ul>
         Солтынчук Евгений Леонидович 07.04.1982 Образование
         высшее,педагогическое. Работал в американских компаниях “Cunard”,
@@ -224,7 +289,11 @@ function Contacts() {
   return (
     <div>
       <h1>Contacts</h1>
-      <img src={avatar} alt="Avatar" />
+      <img
+        style={{ maxWidth: "40%", maxHeight: "40%" }}
+        src={avatar}
+        alt="Avatar"
+      />
       <ul>
         Все вышеперечисленные виды массажа, хорошо работают, как для мужчин ,
         так и для женщин. И в зависимости от состояния здоровья и физической
