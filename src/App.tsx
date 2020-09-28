@@ -1,4 +1,19 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Timeline from "@material-ui/lab/Timeline";
+import TimelineItem from "@material-ui/lab/TimelineItem";
+import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+import TimelineConnector from "@material-ui/lab/TimelineConnector";
+import TimelineContent from "@material-ui/lab/TimelineContent";
+import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
+import TimelineDot from "@material-ui/lab/TimelineDot";
+import FastfoodIcon from "@material-ui/icons/Fastfood";
+import LaptopMacIcon from "@material-ui/icons/LaptopMac";
+import HotelIcon from "@material-ui/icons/Hotel";
+import RepeatIcon from "@material-ui/icons/Repeat";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,13 +34,21 @@ import avatar from "./images/contacts.png";
 // through the site. This preserves the browser history,
 // making sure things like the back button and bookmarks
 // work properly.
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: "6px 16px",
+  },
+  secondaryTail: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+}));
 
 export default function App() {
   return (
     <Router>
       <div
         style={{
-          backgroundColor: "gray",
+          backgroundColor: "",
         }}
       >
         {/* {<OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />} */}
@@ -33,24 +56,23 @@ export default function App() {
           style={{
             backgroundColor: "brown",
             display: "flex",
-            //alignItems: "center",
             justifyContent: "space-around",
             position: "fixed",
             width: "100%",
             marginTop: "15px",
           }}
         >
-          <h2 style={{ backgroundColor: "yellowgreen" }}>
+          <h2 style={{ backgroundColor: "" }}>
             <OldSchoolMenuLink
               to="/massages"
               label="Massages"
               // activeOnlyWhenExact={true}
             />
           </h2>
-          <h2 style={{ backgroundColor: "whitesmoke" }}>
+          <h2 style={{ backgroundColor: "" }}>
             <OldSchoolMenuLink to="/about" label={"About"} />
           </h2>
-          <h2 style={{ backgroundColor: "gray" }}>
+          <h2 style={{ backgroundColor: "" }}>
             <OldSchoolMenuLink to="/contacts" label={"Contacts"} />
           </h2>
         </div>
@@ -89,6 +111,7 @@ export default function App() {
 
 function MassagesRoute() {
   let { path, url } = useRouteMatch();
+  const classes = useStyles();
 
   // console.log("path", path);
   return (
@@ -101,38 +124,123 @@ function MassagesRoute() {
       >
         <div
           style={{
-            backgroundColor: "blue",
+            backgroundColor: "lightGreen",
             display: "flex",
             justifyContent: "space-around",
             maxHeight: "100%",
           }}
         >
-          <div style={{ backgroundColor: "white" }}>
+          <div style={{ backgroundColor: "" }}>
             <NewSchoolMenuLink
               to={`${url}/japanese`}
               label={"Japanese massage"}
               activeOnlyWhenExact={true}
             />
           </div>
-          <div style={{ backgroundColor: "yellow" }}>
+          <div style={{ backgroundColor: "" }}>
             <NewSchoolMenuLink
               to={`${url}/vietnamese`}
               label={"Vietnamese massage"}
             />
           </div>
-          <div style={{ backgroundColor: "red" }}>
+          <div style={{ backgroundColor: "" }}>
             <NewSchoolMenuLink
               to={`${url}/relaxing`}
               label={"Relaxing massage"}
             />
           </div>
-          <div style={{ backgroundColor: "lightGreen" }}>
+          <div style={{ backgroundColor: "" }}>
             <NewSchoolMenuLink
               to={`${url}/visceral`}
               label={"Visceral chiropractic"}
             />
           </div>
         </div>
+
+        <Timeline align="alternate">
+          <TimelineItem style={{ marginTop: "150px" }}>
+            <TimelineOppositeContent>
+              <Typography variant="body2" color="textSecondary">
+                2002-2007
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot>
+                <FastfoodIcon />
+              </TimelineDot>
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography variant="h6" component="h1">
+                  Образование
+                </Typography>
+                <Typography>Высшее педагогическое (бла,бла,бла...)</Typography>
+              </Paper>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography variant="body2" color="textSecondary">
+                2008 - 2019
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot color="primary">
+                <LaptopMacIcon />
+              </TimelineDot>
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography variant="h6" component="h1">
+                  Работа на кораблях
+                </Typography>
+                <Typography>Хочу ещё разок:)</Typography>
+              </Paper>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography variant="body2" color="textSecondary">
+                2015 - 2020
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot color="primary" variant="outlined">
+                <HotelIcon />
+              </TimelineDot>
+              <TimelineConnector className={classes.secondaryTail} />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography variant="h6" component="h1">
+                  Стаж работы массажистом
+                </Typography>
+                <Typography>
+                  5 лет, но можно написать сколько хочу...
+                </Typography>
+              </Paper>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot color="secondary">
+                <RepeatIcon />
+              </TimelineDot>
+            </TimelineSeparator>
+            <TimelineContent>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography variant="h6" component="h1">
+                  Доп. инфа
+                </Typography>
+                <Typography>
+                  Очень нерешительльный самоубийца, умер от старости
+                </Typography>
+              </Paper>
+            </TimelineContent>
+          </TimelineItem>
+        </Timeline>
 
         <Switch>
           {/* <Route exact path={path}> */}
@@ -263,34 +371,36 @@ function Massages() {
 }
 
 function About() {
-  return (
-    <div>
-      <h1>About</h1>
-      <div>
-        <img
-          style={{ maxWidth: "40%", maxHeight: "40%" }}
-          src={logo}
-          alt="Logo"
-        />
-      </div>
-      <ul>
-        Солтынчук Евгений Леонидович 07.04.1982 Образование
-        высшее,педагогическое. Работал в американских компаниях “Cunard”,
-        “Princess” в течении 11 лет, в качестве профессионального танцора.
-        Благодаря 20-ти летнему танцевальному стажу, есть опыт техники
-        восстановления тела после травм, переломов, растяжений, физической и
-        эмоциональной перегрузке , а также по биомеханике тела и работы мышц.
-      </ul>
-    </div>
-  );
+  return <div></div>;
 }
+
+//     <div>
+//       <h1>About</h1>
+//       <div>
+//         <img
+//           style={{ maxWidth: "30%", maxHeight: "30%" }}
+//           src={logo}
+//           alt="Logo"
+//         />
+//       </div>
+//       <ul>
+//         Солтынчук Евгений Леонидович 07.04.1982 Образование
+//         высшее,педагогическое. Работал в американских компаниях “Cunard”,
+//         “Princess” в течении 11 лет, в качестве профессионального танцора.
+//         Благодаря 20-ти летнему танцевальному стажу, есть опыт техники
+//         восстановления тела после травм, переломов, растяжений, физической и
+//         эмоциональной перегрузке , а также по биомеханике тела и работы мышц.
+//       </ul>
+//     </div>
+//   );
+// }
 
 function Contacts() {
   return (
     <div>
       <h1>Contacts</h1>
       <img
-        style={{ maxWidth: "40%", maxHeight: "40%" }}
+        style={{ maxWidth: "30%", maxHeight: "30%" }}
         src={avatar}
         alt="Avatar"
       />
