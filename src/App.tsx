@@ -41,6 +41,8 @@ import logo from "./images/about.jpg"; // Tell webpack this JS file uses this im
 import avatar from "./images/contacts.png";
 import { link } from "fs";
 import { keys } from "@material-ui/core/styles/createBreakpoints";
+import { Massages, MassageType } from "./components/Massages/Massages";
+import { massagesData } from "./components/Massages/constants";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -58,24 +60,6 @@ const useStyles = makeStyles((theme) => ({
   },
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
-  },
-
-  // Cards
-  root: {
-    minWidth: 275,
-    margin: 5,
-  },
-  bullet: {
-    // display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-    flexDirection: "row",
-  },
-  pos: {
-    marginBottom: 12,
   },
 }));
 
@@ -153,7 +137,6 @@ function MassagesRoute() {
   ];
 
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Router>
@@ -189,36 +172,9 @@ function MassagesRoute() {
           style={{ width: "100%" }}
        /> */}
       </div>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {Object.values(massagesData).map((data) => {
-          return (
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  <h2>{data.title}</h2>
-                </Typography>
-                <CardMedia>
-                  {/* className={classes.media} 
-                  image="images/japanese (1).png" */}
-                </CardMedia>
-                <Typography variant="h5" component="h2"></Typography>
-                <Typography
-                  className={classes.pos}
-                  color="textSecondary"
-                ></Typography>
-                <Typography variant="body2" component="p">
-                  <br />
-                  {}
-                </Typography>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
+
+      <Massages />
+
       {/*  <Card style={{ backgroundColor: "gray" }}>
         <div>
           {Object.values(massagesData.japanese).map((value) => {
@@ -380,59 +336,7 @@ function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
   );
 }
 
-type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
-type Massage = { title: string; description: string; images: any[] };
-type Massages = { [M in MassageType]: Massage };
-
-const massagesData: Massages = {
-  japanese: {
-    title: "Японский",
-    description:
-      "Юмейхо терапия 1 ступень (японская техника массажа) Построена на основе биомеханики тела и влиянии смещения центра тяжести костей таза, на здоровье человека. Юмейхо терапия включает в себя лимфатический массаж всего тела, мягкую мануальную терапию и проработку мышц всего тела.",
-    images: [
-      require("./images/japanese (1).png"),
-      require("./images/japanese (2).jpg"),
-      require("./images/japanese (3).jpg"),
-      require("./images/japanese (4).jpg"),
-    ],
-  },
-  vietnamese: {
-    title: "Вьетнамский",
-    description:
-      "Юмейхо терапия 2 ступень (вьетнамская техника массажа) Это система специально подобранных приемов обдавливания, скруток и растяжек (основанных на приемах боевых искусств), направленных на глубокую проработку мышц и связок, снятия напряжения со всего тела и увеличения объема движения суставов.",
-    images: [
-      require("./images/vietnamese (1).jpg"),
-      require("./images/vietnamese (2).jpg"),
-      require("./images/vietnamese (3).jpg"),
-      require("./images/vietnamese (4).jpg"),
-      require("./images/vietnamese (5).jpg"),
-    ],
-    // or image: "url"
-  },
-  relaxing: {
-    title: "Расслабляющий",
-    description: "",
-    images: [
-      require("./images/relaxing (1).jpg"),
-      require("./images/relaxing (2).jpg"),
-      require("./images/relaxing (3).jpg"),
-      require("./images/relaxing (4).jpg"),
-    ],
-  },
-  visceral: {
-    title: "Массаж живота",
-    description:
-      "Висцеральная хиропрактика(массаж живота)Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них.Помогает справляться с широким спектром ослабления функций органов всего тела.   Массаж живота устраняет: 1. Дисфункции работы желудочно-кишечного тракта 2. Патологии работы почек 3. Нарушение работы половой системы у мужчин и женщин 4. Плохая циркуляция крови 5. Недуги органов дыхания 6. Воспаление поджелудочной железы, ослабление работы печени и желчного пузыря.  Улучшает: 1. Работу сердечно-сосудистой системы 2. Метаболизм 3. Корректирует избыточный вес 4. Психоэмоциональное состояние 5. Профилактика простудных заболеваний и стимуляция иммунной системы.",
-    images: [
-      require("./images/visceral (1).jpg"),
-      require("./images/visceral (2).jpg"),
-      require("./images/visceral (3).jpg"),
-      require("./images/visceral (4).jpg"),
-    ],
-  },
-};
-
-function Massages() {
+function MassagesPage() {
   let massageId = (useParams() as any).massageId as MassageType;
   console.log("useParams", useParams());
 
@@ -442,7 +346,7 @@ function Massages() {
     <div>
       <h3>{title}</h3>
 
-      {images.map((image) => {
+      {images.map((image: string) => {
         return <img src={image}>{}</img>;
       })}
       {/* <img src={image} alt="Фото" /> */}
