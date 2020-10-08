@@ -119,7 +119,7 @@ function MassagesRoute() {
       >
         <div
           style={{
-            backgroundColor: "lightGreen",
+            // backgroundColor: "lightGreen",
             display: "flex",
             justifyContent: "space-around",
             maxHeight: "100%",
@@ -129,7 +129,6 @@ function MassagesRoute() {
             <NewSchoolMenuLink to={link.to} label={link.label} />
           ))}
         </div>
-
         <Switch>
           {/* <Route exact path={path}> */}
           <Route path={`${path}/:massageId`}>
@@ -145,6 +144,7 @@ function MassagesRoute() {
       </div>
 
       <Massages />
+      <About />
     </Router>
   );
 }

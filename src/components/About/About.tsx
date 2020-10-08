@@ -1,11 +1,9 @@
-import React, { Props } from "react";
+import React from "react";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
 import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
 import { Typography } from "@material-ui/core";
 import TimelineDot from "@material-ui/lab/TimelineDot";
-import classes from "*.module.css";
-import { Router } from "react-router-dom";
 import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
@@ -14,25 +12,25 @@ import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import HotelIcon from "@material-ui/icons/Hotel";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import Paper from "@material-ui/core/Paper";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  // Timelines
+  paper: {
+    padding: "6px 16px",
+    // backgroundColor: "red",
+  },
+  secondaryTail: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+}));
 
 export const About = () => {
+  const classes = useStyles();
   return (
     <Timeline align="alternate">
-      <TimelineItem style={{ marginTop: "150px" }}>
+      <TimelineItem style={{ marginTop: "40px" }}>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             2002-2007
