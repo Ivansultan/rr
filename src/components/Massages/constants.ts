@@ -22,8 +22,8 @@ export const massagesData: MassageList = {
       require("./media/vietnamese(1).jpg"),
       require("./media/vietnamese(2).jpg"),
       require("./media/vietnamese(3).jpg"),
-      // require("./media/vietnamese(4).jpg"),
-      // require("./media/vietnamese(5).jpg"),
+      require("./media/vietnamese(4).jpg"),
+      require("./media/vietnamese(5).jpg"),
     ],
     // or image: "url"
   },

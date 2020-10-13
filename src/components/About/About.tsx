@@ -7,10 +7,10 @@ import TimelineDot from "@material-ui/lab/TimelineDot";
 import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
-import FastfoodIcon from "@material-ui/icons/Fastfood";
-import LaptopMacIcon from "@material-ui/icons/LaptopMac";
-import HotelIcon from "@material-ui/icons/Hotel";
-import RepeatIcon from "@material-ui/icons/Repeat";
+import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import DirectionsBoatIcon from "@material-ui/icons/DirectionsBoat";
+import SchoolIcon from "@material-ui/icons/School";
+import InfoIcon from "@material-ui/icons/Info";
 import Paper from "@material-ui/core/Paper";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -30,48 +30,31 @@ export const About = () => {
   const classes = useStyles();
   return (
     <Timeline align="alternate">
-      <TimelineItem style={{ marginTop: "40px" }}>
-        <TimelineOppositeContent>
-          <Typography variant="body2" color="textSecondary">
-            2002-2007
-          </Typography>
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineDot>
-            <FastfoodIcon />
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
-            <Typography variant="h6" component="h1">
-              Образование
-            </Typography>
-            <Typography>Высшее педагогическое (бла,бла,бла...)</Typography>
-          </Paper>
-        </TimelineContent>
-      </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent>
-          <Typography variant="body2" color="textSecondary">
-            2008 - 2019
-          </Typography>
+          <Typography variant="body2" color="textSecondary"></Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot color="primary">
-            <LaptopMacIcon />
+          <TimelineDot color="primary" variant="outlined">
+            <InfoIcon />
           </TimelineDot>
-          <TimelineConnector />
+          <TimelineConnector className={classes.secondaryTail} />
         </TimelineSeparator>
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Работа на кораблях
+              Информация
             </Typography>
-            <Typography>Хочу ещё разок:)</Typography>
+            <Typography>
+              Все вышеперечисленные виды массажа, хорошо работают, как для
+              мужчин , так и для женщин. И в зависимости от состояния здоровья и
+              физической кондиции человека, могут исполняться с легкой, средней
+              и интенсивной нагрузкой.
+            </Typography>
           </Paper>
         </TimelineContent>
       </TimelineItem>
+
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
@@ -80,32 +63,71 @@ export const About = () => {
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot color="primary" variant="outlined">
-            <HotelIcon />
+            <BusinessCenterIcon />
           </TimelineDot>
           <TimelineConnector className={classes.secondaryTail} />
         </TimelineSeparator>
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Стаж работы массажистом
+              Обучение, практика и работа.
             </Typography>
-            <Typography>5 лет, но можно написать сколько хочу...</Typography>
+            <Typography>
+              Работал массажистом с профессиональными танцорами, гимнастами и
+              цирковыми акробатами. Благодаря 20-ти летнему танцевальному стажу,
+              есть опыт техники восстановления тела после травм, переломов,
+              растяжений, физической и эмоциональной перегрузке , а также по
+              биомеханике тела и работы мышц.
+            </Typography>
           </Paper>
         </TimelineContent>
       </TimelineItem>
+
       <TimelineItem>
+        <TimelineOppositeContent>
+          <Typography variant="body2" color="textSecondary">
+            2008 - 2019
+          </Typography>
+        </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot color="secondary">
-            <RepeatIcon />
+          <TimelineDot color="primary" variant="outlined">
+            <DirectionsBoatIcon />
           </TimelineDot>
+          <TimelineConnector className={classes.secondaryTail} />
         </TimelineSeparator>
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Доп. инфа
+              Работа
             </Typography>
             <Typography>
-              Очень нерешительльный самоубийца, умер от старости
+              Работа на круизных лайнерах компаний как "Cunard", "Princess
+              Cruises" в качестве профессионального танцора.
+            </Typography>
+          </Paper>
+        </TimelineContent>
+      </TimelineItem>
+
+      <TimelineItem>
+        <TimelineOppositeContent>
+          <Typography variant="body2" color="textSecondary">
+            2002-2007
+          </Typography>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color="primary" variant="outlined">
+            <SchoolIcon />
+          </TimelineDot>
+          <TimelineConnector className={classes.secondaryTail} />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Paper elevation={3} className={classes.paper}>
+            <Typography variant="h6" component="h1">
+              Образование
+            </Typography>
+            <Typography>
+              выпускник университета им. М. П. Драгоманова, педагогический
+              факультет.
             </Typography>
           </Paper>
         </TimelineContent>

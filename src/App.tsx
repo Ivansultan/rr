@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { About } from "./components/About/About";
 import {
   BrowserRouter as Router,
-  Switch,
+  //Switch,
   Route,
   Link,
   useParams,
@@ -16,6 +16,10 @@ import { link } from "fs";
 import { keys } from "@material-ui/core/styles/createBreakpoints";
 import { Massages, MassageType } from "./components/Massages/Massages";
 import { massagesData } from "./components/Massages/constants";
+import Switch from "@material-ui/core/Switch";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import FormGroup from "@material-ui/core/FormGroup";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -25,7 +29,8 @@ import { massagesData } from "./components/Massages/constants";
 // through the site. This preserves the browser history,
 // making sure things like the back button and bookmarks
 // work properly.
-const useStyles = makeStyles((theme) => ({
+{
+  /*const useStyles = makeStyles((theme) => ({
   // Timelines
   paper: {
     padding: "6px 16px",
@@ -34,23 +39,79 @@ const useStyles = makeStyles((theme) => ({
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
   },
-}));
+})); */
+}
 
 export default function App() {
-  const oldLinks = [
-    { to: "/massages", label: "Massages" },
-    { to: "/about", label: "About" },
-    { to: "/contacts", label: "Contacts" },
-  ];
+  // const oldLinks =
+  //   //   { to: "/massages", label: "Massages" },
+  //   //   { to: "/about", label: "About" },
+  //   { to: "/contacts", label: "Contacts" };
+  const handleChange = (event: any) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const [state, setState] = React.useState({
+    checkedA: true,
+  });
+
   return (
     <Router>
-      <div
-        style={{
-          backgroundColor: "",
-        }}
-      >
-        {/* {<OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />} */}
-        <h1
+      <div>
+        {/*  <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="" />
+
+        
+          <OldSchoolMenuLink
+            activeOnlyWhenExact={true}
+            to="/contacts"
+            label="Contacts"
+          />
+        */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <img
+              src={require("./components/Massages/media/jensHand.png")}
+              width="80"
+            />
+          </div>
+          <div style={{ flexDirection: "column", alignItems: "center" }}>
+            <div>
+              <h1>Массаж для расслабления и реабилитации</h1>
+            </div>
+
+            <div>
+              <FormGroup>
+                <Typography component="div">
+                  <Grid
+                    component="label"
+                    container
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Grid item>RUS</Grid>
+                    <Grid item>
+                      <Switch
+                        checked={state.checkedA}
+                        onChange={handleChange}
+                        name="checkedA"
+                      />
+                    </Grid>
+                    <Grid item>ENG</Grid>
+                  </Grid>
+                </Typography>
+              </FormGroup>
+            </div>
+          </div>
+        </div>
+        <hr />
+        {/* <h1
           style={{
             backgroundColor: "brown",
             display: "flex",
@@ -59,9 +120,9 @@ export default function App() {
             width: "100%",
             marginTop: "15px",
           }}
-        ></h1>
+        ></h1> 
 
-        <hr />
+        <hr /> */}
 
         {/*
           A <Switch> looks through all its children <Route>
@@ -73,20 +134,19 @@ export default function App() {
 
         <Redirect to="/massages" />
 
-        <Switch>
-          <Route path="/massages">
-            <MassagesRoute />
-          </Route>
+        {/* <Switch> */}
+        <Route path="/massages">
+          <MassagesRoute />
+        </Route>
 
-          {/*
+        {/*
           <Route path="/about">
             <AboutPage />
-          </Route>
-          <Route path="/contacts">
-            <Contacts />
-          </Route>
-          */}
-        </Switch>
+          </Route> */}
+        <Route path="/contacts">
+          <Contacts />
+        </Route>
+        {/* </Switch> */}
       </div>
     </Router>
   );
@@ -96,22 +156,22 @@ export default function App() {
 // in your app.
 
 function MassagesRoute() {
-  let { path, url } = useRouteMatch();
+  // let { path, url } = useRouteMatch();
 
   // console.log("path", path);
 
-  const newLinks = [
-    { to: `${url}/japanese`, label: "Japanese massage" },
-    { to: `${url}/vietnamese`, label: "Vietnamese massage" },
-    { to: `${url}/relaxing`, label: "Relaxing massage" },
-    { to: `${url}/visceral`, label: "Visceral chiropractic" },
-  ];
+  //const newLinks = [
+  //  { to: `${url}/japanese`, label: "Japanese massage" },
+  //  { to: `${url}/vietnamese`, label: "Vietnamese massage" },
+  //  { to: `${url}/relaxing`, label: "Relaxing massage" },
+  //  { to: `${url}/visceral`, label: "Visceral chiropractic" },
+  //];
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <Router>
-      <div
+      {/* <div
         style={{
           //display: "flex",
           marginTop: "60px",
@@ -130,21 +190,24 @@ function MassagesRoute() {
           ))}
         </div>
         <Switch>
-          {/* <Route exact path={path}> */}
+           <Route exact path={path}> 
           <Route path={`${path}/:massageId`}>
             <NewSchoolMenuLink />
           </Route>
         </Switch>
 
-        {/*<img
+        <img
           alt="logo"
           src={require("./images/photo_home.jpg")}
           style={{ width: "100%" }}
-       /> */}
-      </div>
+       /> 
+      </div> */}
 
       <Massages />
+      <hr />
       <About />
+      <hr />
+      <Contacts />
     </Router>
   );
 }
@@ -158,16 +221,22 @@ function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
   // console.log("math", match);
 
   return (
-    <div className={match ? "active" : ""}>
-      {/* {match && "> "} */}
+    <div
+      style={{ backgroundColor: "turquoise" }}
+      className={match ? "active" : ""}
+    >
+      {match && "> "}
       <Link to={to}>
-        <div style={{ color: match ? "orange" : "purple" }}>{label} </div>
+        <div style={{ color: match ? "orange" : "purple" }}>
+          {label} {""}
+        </div>
       </Link>
     </div>
   );
 }
 
-function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
+/*
+  function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
   let match = useRouteMatch({
     path: to,
     exact: activeOnlyWhenExact,
@@ -175,7 +244,7 @@ function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
 
   return (
     <div className={match ? "active" : ""}>
-      {/* {match && "> "} */}
+      {/* {match && "> "} 
       <Link to={to}>
         <div
           style={{
@@ -189,7 +258,8 @@ function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
       </Link>
     </div>
   );
-}
+} 
+*/
 
 // function MassagesPage() {
 //   let massageId = (useParams() as any).massageId as MassageType;
@@ -231,24 +301,70 @@ function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
 //   );
 // }
 
-// function Contacts(props) {
-//   return (
-//     <div>
-//       <img
-//         style={{ maxWidth: "30%", maxHeight: "30%" }}
-//         src={avatar}
-//         alt="Avatar"
-//       />
-//       <ul>
-//         Все вышеперечисленные виды массажа, хорошо работают, как для мужчин ,
-//         так и для женщин. И в зависимости от состояния здоровья и физической
-//         кондиции человека, могут исполняться с легкой, средней и интенсивной
-//         нагрузкой. Солтынчук Евгений Леонидович bigmavr5@gmail.com +38 093 110
-//         44 35 +38 066 118 16 08
-//       </ul>
-//     </div>
-//   );
-// }
+function Contacts() {
+  return (
+    <div>
+      <div
+        style={{
+          flexDirection: "row",
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            height: 100,
+            marginLeft: 15,
+            marginTop: 15,
+          }}
+        >
+          <img
+            style={{
+              maxWidth: 100,
+            }}
+            src={avatar}
+            alt="Avatar"
+          />
+        </div>
+
+        <div style={{ marginLeft: 15 }}>
+          <h1>Солтынчук Евгений Леонидович</h1>
+          <h3>Email: bigmavr5@gmail.com</h3>
+          <h3>Phone: +38 093 110 44 35; +38 066 118 16 08;</h3>
+        </div>
+      </div>
+
+      <div
+        style={{
+          justifyContent: "space-around",
+          alignItems: "center",
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        <img
+          src={require("./components/Massages/media/diploma(1).jpg")}
+          alt="Diploma1"
+          width="200"
+        />
+        <img
+          src={require("./components/Massages/media/diploma(2).jpg")}
+          alt="Diploma2"
+          width="200"
+        />
+        <img
+          src={require("./components/Massages/media/diploma(3).jpg")}
+          alt="Diploma3"
+          width="200"
+        />
+        <img
+          src={require("./components/Massages/media/diploma(4).jpg")}
+          alt="Diploma4"
+          width="200"
+        />
+      </div>
+    </div>
+  );
+}
 
 // function AboutPage(props) {
 //   return <div>About</div>;

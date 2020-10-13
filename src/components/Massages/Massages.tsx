@@ -11,6 +11,8 @@ import { massagesData } from "./constants";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+// import MasonryLayout from "src/components/MasonryLayout/MasonryLayout";
+import MasonryLayout from "../MasonryLayout/MasonryLayout";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type Massage = {
@@ -57,12 +59,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "white",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    // padding: theme.spacing(2, 4, 3),
     marginLeft: 100,
     marginRight: 100,
     // backgroundColor: "red",
@@ -76,8 +79,11 @@ export const Massages = (props: Props) => {
 
   const [open, setOpen] = React.useState(false);
   const [cardDescription, setCardDescription] = React.useState("");
+  const [cardTitle, setCardTitle] = React.useState("");
   const [cardImages, setCardImages] = React.useState<any[]>([]);
-  console.log("cardImages", cardImages);
+  // console.log("cardImages", cardImages);
+  // console.log("cardTitle", cardTitle);
+
   // console.log("open", open);
   // console.log("cardDescription", cardDescription);
 
@@ -89,10 +95,15 @@ export const Massages = (props: Props) => {
   //    setOpen(false);
   //  };
 
-  const handleCardInfo = (description: string, images: any[]) => {
+  const handleCardInfo = (
+    title: string,
+    description: string,
+    images: any[]
+  ) => {
     setOpen(!open);
     setCardDescription(description);
     setCardImages(images);
+    setCardTitle(title);
   };
 
   return (
@@ -115,13 +126,15 @@ export const Massages = (props: Props) => {
               //  backgroundColor: "gray",
               display: "flex",
               justifyContent: "space-around",
-              //maxHeight: "100%",
+              // maxHeight: "100%",
               width: 300,
             }}
             className={classes.root}
           >
             <CardActionArea
-              onClick={() => handleCardInfo(data.description, data.images)}
+              onClick={() =>
+                handleCardInfo(data.title, data.description, data.images)
+              }
             >
               <Typography
                 className={classes.title}
@@ -154,13 +167,17 @@ export const Massages = (props: Props) => {
         );
       })}
 
+      {/* <Fade in={open}>
+        <MasonryLayout images={cardImages} cardDescription={cardDescription} />
+    </Fade> */}
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
         // onClose={handleClose}
-        onClose={() => handleCardInfo("", [])}
+        onClose={() => handleCardInfo("", "", [])}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -169,19 +186,35 @@ export const Massages = (props: Props) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Подробная информация</h2>
-            {/* <p id="transition-modal-description">{data.description}</p> */}
-            <p id="transition-modal-description">{cardDescription}</p>
-            <div>
-              {cardImages.map((image) => {
-                // return <CardMedia className={classes.img} image={image} />;
-                return <img style={{ maxWidth: "100%" }} src={image} />;
-                // console.log("image", image);
-              })}
-            </div>
+            <h2
+              style={{ justifyContent: "center", display: "flex" }}
+              id="transition-modal-title"
+            >
+              {cardTitle}
+            </h2>
+            <MasonryLayout
+              images={cardImages}
+              cardDescription={cardDescription}
+              // title={cardTitle}
+            />
           </div>
         </Fade>
       </Modal>
     </div>
   );
 };
+
+// {/* <Fade in={open}>
+//             <div className={classes.paper}>
+//               <h2 id="transition-modal-title">Подробная информация</h2>
+//               {/* <p id="transition-modal-description">{data.description}</p> */}
+//               <p id="transition-modal-description">{cardDescription}</p>
+//               <div>
+//                 {cardImages.map((image) => {
+//                   // return <CardMedia className={classes.img} image={image} />;
+//                   return <img style={{ maxWidth: "100%" }} src={image} />;
+//                   // console.log("image", image);
+//                 })}
+//               </div>
+//             </div>
+//           </Fade> */}
