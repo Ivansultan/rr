@@ -10,7 +10,13 @@ for (let i = 0; i < imgId.length; i++) {
   images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
 }
 
-class MasonryLayout extends React.Component {
+type MasonryLayoutProps = {
+  cardTitle: String;
+  cardDescription: String;
+  images: any[];
+};
+
+class MasonryLayout extends React.Component<MasonryLayoutProps> {
   render() {
     return (
       <div className="container">
@@ -31,7 +37,11 @@ class MasonryLayout extends React.Component {
   }
 }
 
-const Tile = ({ src }) => {
+type TileProps = {
+  src: string;
+};
+
+const Tile = ({ src }: TileProps) => {
   return (
     <div className="tile">
       <img src={src} />
@@ -39,8 +49,19 @@ const Tile = ({ src }) => {
   );
 };
 
-class Masonry extends React.Component {
-  constructor(props) {
+type MasonryProps = {
+  brakePoints: number[];
+  children: any;
+};
+
+type MasonryState = {
+  columns: number;
+};
+
+class Masonry extends React.Component<MasonryProps, MasonryState> {
+  refs: any;
+
+  constructor(props: MasonryProps) {
     super(props);
     this.state = {
       columns: 1,
@@ -52,7 +73,7 @@ class Masonry extends React.Component {
     window.addEventListener("resize", this.onResize);
   }
 
-  getColumns(w) {
+  getColumns(w: number) {
     return (
       this.props.brakePoints.reduceRight((p, c, i) => {
         return c < w ? p : i;
@@ -71,13 +92,14 @@ class Masonry extends React.Component {
     }
   }
 
-  mapChildren() {
+  mapChildren(): any[] {
     let col = [];
     const numC = this.state.columns;
     for (let i = 0; i < numC; i++) {
       col.push([]);
     }
-    return this.props.children.reduce((p, c, i) => {
+    // @ts-ignore
+    return (this.props.children as any).reduce((p, c, i) => {
       p[i % numC].push(c);
 
       return p;
@@ -92,9 +114,12 @@ class Masonry extends React.Component {
           return (
             <div className="column" key={ci}>
               {" "}
-              {col.map((child, i) => {
-                return <div key={i}> {child} </div>;
-              })}{" "}
+              {col.map(
+                // @ts-ignore
+                (child, i) => {
+                  return <div key={i}> {child} </div>;
+                }
+              )}{" "}
             </div>
           );
         })}{" "}
@@ -103,4 +128,4 @@ class Masonry extends React.Component {
   }
 }
 
-export default MasonryLayout;
+export default MasonryLayoutProps;

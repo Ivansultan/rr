@@ -20,6 +20,7 @@ import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import FormGroup from "@material-ui/core/FormGroup";
+import MasonryLayoutProps from "./components/MasonryLayout/MasonryLayout";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -333,6 +334,8 @@ function Contacts() {
         </div>
       </div>
 
+      <MasonryLayout />
+
       <div
         style={{
           justifyContent: "space-around",
@@ -344,7 +347,7 @@ function Contacts() {
         <img
           src={require("./components/Massages/media/diploma(1).jpg")}
           alt="Diploma1"
-          width="200"
+          width="250"
         />
         <img
           src={require("./components/Massages/media/diploma(2).jpg")}
@@ -359,7 +362,7 @@ function Contacts() {
         <img
           src={require("./components/Massages/media/diploma(4).jpg")}
           alt="Diploma4"
-          width="200"
+          width="250"
         />
       </div>
     </div>

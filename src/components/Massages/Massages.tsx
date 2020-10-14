@@ -12,7 +12,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 // import MasonryLayout from "src/components/MasonryLayout/MasonryLayout";
-import MasonryLayout from "../MasonryLayout/MasonryLayout";
+import MasonryLayoutProps from "../MasonryLayout/MasonryLayout";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type Massage = {
