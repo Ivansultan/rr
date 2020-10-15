@@ -20,7 +20,10 @@ import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import FormGroup from "@material-ui/core/FormGroup";
-import MasonryLayoutProps from "./components/MasonryLayout/MasonryLayout";
+import MasonryLayout, {
+  Masonry,
+  Tile,
+} from "./components/MasonryLayout/MasonryLayout";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -42,6 +45,8 @@ import MasonryLayoutProps from "./components/MasonryLayout/MasonryLayout";
   },
 })); */
 }
+
+let brakePoints = [350, 500, 750];
 
 export default function App() {
   // const oldLinks =
@@ -74,10 +79,19 @@ export default function App() {
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",
+            padding: 15,
           }}
         >
-          <div>
+          <div
+            style={{
+              marginRight: 15,
+            }}
+            onClick={() => {
+              alert("Redirect to home page");
+            }}
+          >
             <img
+              alt="jestHand"
               src={require("./components/Massages/media/jensHand.png")}
               width="80"
             />
@@ -303,8 +317,18 @@ function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
 // }
 
 function Contacts() {
+  const diplomas = [
+    require("./components/Massages/media/diploma(1).jpg"),
+    require("./components/Massages/media/diploma(2).jpg"),
+    require("./components/Massages/media/diploma(3).jpg"),
+    require("./components/Massages/media/diploma(4).jpg"),
+  ];
   return (
-    <div>
+    <div
+      style={{
+        padding: 15,
+      }}
+    >
       <div
         style={{
           flexDirection: "row",
@@ -314,8 +338,6 @@ function Contacts() {
         <div
           style={{
             height: 100,
-            marginLeft: 15,
-            marginTop: 15,
           }}
         >
           <img
@@ -327,16 +349,24 @@ function Contacts() {
           />
         </div>
 
-        <div style={{ marginLeft: 15 }}>
+        <div
+          style={{
+            marginLeft: 15,
+          }}
+        >
           <h1>Солтынчук Евгений Леонидович</h1>
           <h3>Email: bigmavr5@gmail.com</h3>
           <h3>Phone: +38 093 110 44 35; +38 066 118 16 08;</h3>
         </div>
       </div>
 
-      <MasonryLayout />
+      <Masonry brakePoints={brakePoints}>
+        {diplomas.map((image, id) => {
+          return <Tile src={image} />;
+        })}
+      </Masonry>
 
-      <div
+      {/* <div
         style={{
           justifyContent: "space-around",
           alignItems: "center",
@@ -364,7 +394,7 @@ function Contacts() {
           alt="Diploma4"
           width="250"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

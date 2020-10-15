@@ -11,8 +11,6 @@ for (let i = 0; i < imgId.length; i++) {
 }
 
 type MasonryLayoutProps = {
-  cardTitle: String;
-  cardDescription: String;
   images: any[];
 };
 
@@ -22,8 +20,8 @@ class MasonryLayout extends React.Component<MasonryLayoutProps> {
       <div className="container">
         <div className="masonry-container">
           {/* <p id="transition-modal-description">{data.description}</p> */}
-          <h2 id="transition-modal-title">{this.props.cardTitle}</h2>
-          <p id="transition-modal-description">{this.props.cardDescription}</p>
+          {/* <h2 id="transition-modal-title">{this.props.cardTitle}</h2> */}
+          {/* <p id="transition-modal-description">{this.props.cardDescription}</p> */}
 
           <Masonry brakePoints={brakePoints}>
             {this.props.images.map((image, id) => {
@@ -31,7 +29,7 @@ class MasonryLayout extends React.Component<MasonryLayoutProps> {
               return <Tile src={image} />;
             })}
           </Masonry>
-        </div>{" "}
+        </div>
       </div>
     );
   }
@@ -41,7 +39,7 @@ type TileProps = {
   src: string;
 };
 
-const Tile = ({ src }: TileProps) => {
+export const Tile = ({ src }: TileProps) => {
   return (
     <div className="tile">
       <img src={src} />
@@ -58,7 +56,7 @@ type MasonryState = {
   columns: number;
 };
 
-class Masonry extends React.Component<MasonryProps, MasonryState> {
+export class Masonry extends React.Component<MasonryProps, MasonryState> {
   refs: any;
 
   constructor(props: MasonryProps) {
@@ -128,4 +126,4 @@ class Masonry extends React.Component<MasonryProps, MasonryState> {
   }
 }
 
-export default MasonryLayoutProps;
+export default MasonryLayout;

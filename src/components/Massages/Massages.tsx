@@ -12,14 +12,20 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 // import MasonryLayout from "src/components/MasonryLayout/MasonryLayout";
-import MasonryLayoutProps from "../MasonryLayout/MasonryLayout";
+import MasonryLayout from "../MasonryLayout/MasonryLayout";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
-type Massage = {
+type ExtraInfo = {
+  title: string;
+  items: string[];
+};
+
+export type Massage = {
   title: string;
   shortDescription: string;
   description: string;
   images: any[];
+  extraInfo: ExtraInfo[];
 };
 export type MassageList = { [M in MassageType]: Massage };
 
@@ -66,9 +72,9 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     // padding: theme.spacing(2, 4, 3),
+    paddingBottom: 15,
     marginLeft: 100,
     marginRight: 100,
-    // backgroundColor: "red",
     overflow: "scroll",
     height: 500,
   },
@@ -78,10 +84,16 @@ export const Massages = (props: Props) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const [cardDescription, setCardDescription] = React.useState("");
-  const [cardTitle, setCardTitle] = React.useState("");
-  const [cardImages, setCardImages] = React.useState<any[]>([]);
-  // console.log("cardImages", cardImages);
+  //   const [cardDescription, setCardDescription] = React.useState("");
+  //   const [cardTitle, setCardTitle] = React.useState("");
+  //   const [cardImages, setCardImages] = React.useState<any[]>([]);
+  //   const [cardExtraInfo, setCardExtraInfo] = React.useState([{}]);
+
+  const [activeMassage, setActiveMassage] = React.useState<Massage | undefined>(
+    undefined
+  );
+
+  //console.log("cardListDescription", cardListDescription);
   // console.log("cardTitle", cardTitle);
 
   // console.log("open", open);
@@ -96,14 +108,21 @@ export const Massages = (props: Props) => {
   //  };
 
   const handleCardInfo = (
-    title: string,
-    description: string,
-    images: any[]
+    // title: string,
+    // description: string,
+    // images: any[],
+    // extraInfo: string[{}]
+    massage?: Massage
   ) => {
+    // console.log("listDescription", listDescription);
+
     setOpen(!open);
-    setCardDescription(description);
-    setCardImages(images);
-    setCardTitle(title);
+
+    setActiveMassage(massage);
+    // setCardDescription(description);
+    // setCardExtraInfo(extraInfo);
+    // setCardImages(images);
+    // setCardTitle(title);
   };
 
   return (
@@ -118,7 +137,7 @@ export const Massages = (props: Props) => {
         flexWrap: "wrap",
       }}
     >
-      {Object.values(massagesData).map((data) => {
+      {Object.values(massagesData).map((massage) => {
         // console.log("data", data.description);
         return (
           <Card
@@ -133,7 +152,13 @@ export const Massages = (props: Props) => {
           >
             <CardActionArea
               onClick={() =>
-                handleCardInfo(data.title, data.description, data.images)
+                handleCardInfo(
+                  massage
+                  //   data.title,
+                  //   data.description,
+                  //   data.images,
+                  //   data.extraInfo
+                )
               }
             >
               <Typography
@@ -141,12 +166,12 @@ export const Massages = (props: Props) => {
                 color="textSecondary"
                 gutterBottom
               >
-                <h2>{data.title}</h2>
+                <h2>{massage.title}</h2>
               </Typography>
 
-              <CardMedia className={classes.media} image={data.images[0]} />
+              <CardMedia className={classes.media} image={massage.images[0]} />
               <CardContent>
-                <Typography paragraph>{data.shortDescription}</Typography>
+                <Typography paragraph>{massage.shortDescription}</Typography>
                 <Typography
                   className={classes.pos}
                   color="textSecondary"
@@ -177,7 +202,7 @@ export const Massages = (props: Props) => {
         className={classes.modal}
         open={open}
         // onClose={handleClose}
-        onClose={() => handleCardInfo("", "", [])}
+        onClose={() => handleCardInfo()}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -190,13 +215,30 @@ export const Massages = (props: Props) => {
               style={{ justifyContent: "center", display: "flex" }}
               id="transition-modal-title"
             >
-              {cardTitle}
+              {activeMassage?.title}
             </h2>
-            <MasonryLayout
-              images={cardImages}
-              cardDescription={cardDescription}
-              // title={cardTitle}
-            />
+
+            <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+              {activeMassage?.description}
+            </div>
+            <MasonryLayout images={activeMassage?.images!} />
+
+            <div>
+              {activeMassage?.extraInfo.map((info) => {
+                console.log("info", info);
+                return (
+                  <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+                    {info.title}
+                    <ol>
+                      {info.items.map((item) => {
+                        return <li>{item}</li>;
+                      })}
+                    </ol>
+                  </div>
+                );
+                // return <div>{description}</div>;
+              })}
+            </div>
           </div>
         </Fade>
       </Modal>
