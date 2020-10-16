@@ -10,11 +10,11 @@ for (let i = 0; i < imgId.length; i++) {
   images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
 }
 
-type MasonryLayoutProps = {
+type Props = {
   images: any[];
 };
 
-class MasonryLayout extends React.Component<MasonryLayoutProps> {
+class MasonryLayout extends React.Component<Props> {
   render() {
     return (
       <div className="container">
@@ -42,7 +42,7 @@ type TileProps = {
 export const Tile = ({ src }: TileProps) => {
   return (
     <div className="tile">
-      <img src={src} />
+      <img src={src} alt="" />
     </div>
   );
 };
@@ -107,20 +107,18 @@ export class Masonry extends React.Component<MasonryProps, MasonryState> {
   render() {
     return (
       <div className="masonry" ref="Masonry">
-        {" "}
         {this.mapChildren().map((col, ci) => {
           return (
             <div className="column" key={ci}>
-              {" "}
               {col.map(
                 // @ts-ignore
                 (child, i) => {
                   return <div key={i}> {child} </div>;
                 }
-              )}{" "}
+              )}
             </div>
           );
-        })}{" "}
+        })}
       </div>
     );
   }

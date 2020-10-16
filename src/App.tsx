@@ -96,12 +96,20 @@ export default function App() {
               width="80"
             />
           </div>
-          <div style={{ flexDirection: "column", alignItems: "center" }}>
+          <div
+            style={{
+              flexDirection: "column",
+              alignItems: "center",
+              display: "flex",
+            }}
+          >
             <div>
-              <h1>Массаж для расслабления и реабилитации</h1>
+              <h1 style={{ textAlign: "center" }}>
+                Массаж для расслабления и реабилитации
+              </h1>
             </div>
 
-            <div>
+            <div style={{}}>
               <FormGroup>
                 <Typography component="div">
                   <Grid

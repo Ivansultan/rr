@@ -125,6 +125,8 @@ export const Massages = (props: Props) => {
     // setCardTitle(title);
   };
 
+  console.log("activeMassage?.images", activeMassage?.images);
+
   return (
     <div
       style={{
@@ -221,7 +223,7 @@ export const Massages = (props: Props) => {
             <div style={{ paddingLeft: 30, paddingRight: 30 }}>
               {activeMassage?.description}
             </div>
-            <MasonryLayout images={activeMassage?.images!} />
+            <MasonryLayout images={activeMassage?.images! ?? []} />
 
             <div>
               {activeMassage?.extraInfo.map((info) => {
