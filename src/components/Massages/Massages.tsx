@@ -226,7 +226,7 @@ export const Massages = (props: Props) => {
               {activeMassage?.title}
             </h2>
 
-            <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+            <div style={{ paddingLeft: 10, paddingRight: 10 }}>
               {activeMassage?.description}
             </div>
             <MasonryLayout images={activeMassage?.images! ?? []} />
@@ -235,7 +235,7 @@ export const Massages = (props: Props) => {
               {activeMassage?.extraInfo.map((info) => {
                 console.log("info", info);
                 return (
-                  <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+                  <div style={{ paddingLeft: 10, paddingRight: 10 }}>
                     {info.title}
                     <ol>
                       {info.items.map((item) => {
