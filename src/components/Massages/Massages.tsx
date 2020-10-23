@@ -5,6 +5,7 @@ import {
   Typography,
   CardMedia,
   makeStyles,
+  useMediaQuery,
   CardActionArea,
 } from "@material-ui/core";
 import { massagesData } from "./constants";
@@ -13,6 +14,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 // import MasonryLayout from "src/components/MasonryLayout/MasonryLayout";
 import MasonryLayout from "../MasonryLayout/MasonryLayout";
+//import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type ExtraInfo = {
@@ -49,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   pos: {
     marginBottom: 12,
   },
-
   media: {
     //height: 0,
     paddingTop: "56.25%", // 16:9
@@ -60,28 +62,32 @@ const useStyles = makeStyles((theme) => ({
     height: 150,
     width: 150,
   },
-
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
-    // padding: theme.spacing(2, 4, 3),
-    paddingBottom: 15,
-    marginLeft: 100,
-    marginRight: 100,
+    padding: theme.spacing(2, 4, 3),
+    // paddingBottom: 15,
+    // marginLeft: 70,
+    // marginRight: 70,
     overflow: "scroll",
     height: 500,
+    maxWidth: 600,
   },
 }));
 
 export const Massages = (props: Props) => {
   const classes = useStyles();
+
+  //   const matches = useMediaQuery("(min-width:600px)");
+
+  //const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [open, setOpen] = React.useState(false);
   //   const [cardDescription, setCardDescription] = React.useState("");

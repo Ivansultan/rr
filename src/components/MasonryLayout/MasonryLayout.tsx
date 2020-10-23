@@ -80,7 +80,7 @@ export class Masonry extends React.Component<MasonryProps, MasonryState> {
   }
 
   onResize() {
-    // console.log("this.refs.Masonry.offsetWidth", this.refs.Masonry.offsetWidth);
+    console.log("this.refs.Masonry.offsetWidth", this.refs.Masonry.offsetWidth);
     const columns = this.getColumns(this.refs.Masonry.offsetWidth);
     console.log("colums", columns);
     if (columns !== this.state.columns) {

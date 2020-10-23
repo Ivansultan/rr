@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { About } from "./components/About/About";
 import {
   BrowserRouter as Router,
-  //Switch,
+  // Switch,
   Route,
   Link,
   useParams,
@@ -235,28 +235,28 @@ function MassagesRoute() {
   );
 }
 
-function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
-  let match = useRouteMatch({
-    path: to,
-    exact: activeOnlyWhenExact,
-  });
+// function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
+//   let match = useRouteMatch({
+//     path: to,
+//     exact: activeOnlyWhenExact,
+//   });
 
-  // console.log("math", match);
+//   // console.log("math", match);
 
-  return (
-    <div
-      style={{ backgroundColor: "turquoise" }}
-      className={match ? "active" : ""}
-    >
-      {match && "> "}
-      <Link to={to}>
-        <div style={{ color: match ? "orange" : "purple" }}>
-          {label} {""}
-        </div>
-      </Link>
-    </div>
-  );
-}
+//   return (
+//     <div
+//       style={{ backgroundColor: "turquoise" }}
+//       className={match ? "active" : ""}
+//     >
+//       {match && "> "}
+//       <Link to={to}>
+//         <div style={{ color: match ? "orange" : "purple" }}>
+//           {label} {""}
+//         </div>
+//       </Link>
+//     </div>
+//   );
+// }
 
 /*
   function NewSchoolMenuLink({ label, to, activeOnlyWhenExact }: any) {
