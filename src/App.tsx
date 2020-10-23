@@ -227,9 +227,9 @@ function MassagesRoute() {
       </div> */}
 
       <Massages />
-      <hr />
+     
       <About />
-      <hr />
+      
       <Contacts />
     </Router>
   );
@@ -334,6 +334,7 @@ function Contacts() {
   return (
     <div
       style={{
+        marginTop: 80,
         padding: 15,
       }}
     >

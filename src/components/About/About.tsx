@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export const About = () => {
   const classes = useStyles();
   return (
-    <Timeline align="alternate">
+    <Timeline style={{marginTop: 80}} align="alternate">
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary"></Typography>
