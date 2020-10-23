@@ -359,11 +359,11 @@ function Contacts() {
 
         <div
           style={{
-            marginLeft: 15,
+            marginLeft: 20,
           }}
         >
-          <h1>Солтынчук Евгений Леонидович</h1>
-          <h3>Email: bigmavr5@gmail.com</h3>
+          <h1 style={{marginTop: 1}}>Солтынчук Евгений Леонидович</h1>
+          <h2>Email: bigmavr5@gmail.com</h2>
           <h3>Phone: +38 093 110 44 35; +38 066 118 16 08;</h3>
         </div>
       </div>
