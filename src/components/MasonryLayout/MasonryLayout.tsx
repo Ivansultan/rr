@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css";
-//import { title } from "process";
 
 let brakePoints = [350, 500, 750];
 let images = [];
@@ -19,13 +18,9 @@ class MasonryLayout extends React.Component<Props> {
     return (
       <div className="container">
         <div className="masonry-container">
-          {/* <p id="transition-modal-description">{data.description}</p> */}
-          {/* <h2 id="transition-modal-title">{this.props.cardTitle}</h2> */}
-          {/* <p id="transition-modal-description">{this.props.cardDescription}</p> */}
 
           <Masonry brakePoints={brakePoints}>
             {this.props.images.map((image, id) => {
-              // {images.map((image, id) => {
               return <Tile src={image} />;
             })}
           </Masonry>

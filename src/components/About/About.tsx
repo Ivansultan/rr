@@ -16,10 +16,8 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  // Timelines
   paper: {
     padding: "6px 16px",
-    // backgroundColor: "red",
   },
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
