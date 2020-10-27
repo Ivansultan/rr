@@ -14,6 +14,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import Paper from "@material-ui/core/Paper";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { FormattedMessage } from "react-intl";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,7 +42,7 @@ export const About = () => {
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Информация
+              <FormattedMessage id="Information"/>
             </Typography>
             <Typography>
               Все вышеперечисленные виды массажа, хорошо работают, как для
