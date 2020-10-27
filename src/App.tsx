@@ -16,6 +16,7 @@ import  {
   Masonry,
   Tile,
 } from "./components/MasonryLayout/MasonryLayout";
+import { FormattedMessage } from "react-intl";
 
 
 
@@ -67,7 +68,7 @@ export default function App() {
           >
             <div>
               <h1 style={{ textAlign: "center" }}>
-                Массаж для расслабления и реабилитации
+                <FormattedMessage id="Massage to relax and rehab"/>
               </h1>
             </div>
 
