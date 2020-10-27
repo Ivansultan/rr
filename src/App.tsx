@@ -1,30 +1,29 @@
 import React from "react";
 import { About } from "./components/About/About";
-import {
-  BrowserRouter as Router,
-  Route,
-  
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import avatar from "./images/contacts.png";
-import { Massages  } from "./components/Massages/Massages";
+import { Massages } from "./components/Massages/Massages";
 import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import FormGroup from "@material-ui/core/FormGroup";
-import  {
-  Masonry,
-  Tile,
-} from "./components/MasonryLayout/MasonryLayout";
-import { FormattedMessage } from "react-intl";
+import { Masonry, Tile } from "./components/MasonryLayout/MasonryLayout";
+import { FormattedMessage, IntlProvider } from "react-intl";
+import Russian from "./translations/ru.json";
+import English from "./translations/en.json";
 
+const messages = {
+  en: English,
+  ru: Russian,
+};
 
+const locale = "ru";
 
 let brakePoints = [350, 500, 750];
 
 export default function App() {
-  
   const handleChange = (event: any) => {
+    localStorage.setItem("locale", event.target.checked ? "en" : "ru");
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
@@ -33,107 +32,97 @@ export default function App() {
   });
 
   return (
-    <Router>
-      <div>
-        
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignItems: "center",
-            padding: 15,
-          }}
-        >
+    <IntlProvider locale={locale} messages={messages[locale]}>
+      <Router>
+        <div>
           <div
             style={{
-              marginRight: 15,
-            }}
-            onClick={() => {
-              alert("Redirect to home page");
-            }}
-          >
-            <img
-              alt="jestHand"
-              src={require("./components/Massages/media/jensHand.png")}
-              width="80"
-            />
-          </div>
-          <div
-            style={{
-              flexDirection: "column",
-              alignItems: "center",
               display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
+              padding: 15,
             }}
           >
-            <div>
-              <h1 style={{ textAlign: "center" }}>
-                <FormattedMessage id="Massage to relax and rehab"/>
-              </h1>
+            <div
+              style={{
+                marginRight: 15,
+              }}
+              onClick={() => {
+                alert("Redirect to home page");
+              }}
+            >
+              <img
+                alt="jestHand"
+                src={require("./components/Massages/media/jensHand.png")}
+                width="80"
+              />
             </div>
+            <div
+              style={{
+                flexDirection: "column",
+                alignItems: "center",
+                display: "flex",
+              }}
+            >
+              <div>
+                <h1 style={{ textAlign: "center" }}>
+                <FormattedMessage id="Massage to relax and rehab"/>
+                </h1>
+              </div>
 
-            <div style={{}}>
-              <FormGroup>
-                <Typography component="div">
-                  <Grid
-                    component="label"
-                    container
-                    alignItems="center"
-                    spacing={1}
-                  >
-                    <Grid item>RUS</Grid>
-                    <Grid item>
-                      <Switch
-                        checked={state.checkedA}
-                        onChange={handleChange}
-                        name="checkedA"
-                      />
+              <div style={{}}>
+                <FormGroup>
+                  <Typography component="div">
+                    <Grid
+                      component="label"
+                      container
+                      alignItems="center"
+                      spacing={1}
+                    >
+                      <Grid item>RUS</Grid>
+                      <Grid item>
+                        <Switch
+                          checked={state.checkedA}
+                          onChange={handleChange}
+                          name="checkedA"
+                        />
+                      </Grid>
+                      <Grid item>ENG</Grid>
                     </Grid>
-                    <Grid item>ENG</Grid>
-                  </Grid>
-                </Typography>
-              </FormGroup>
+                  </Typography>
+                </FormGroup>
+              </div>
             </div>
           </div>
+          <hr />
+
+          <Redirect to="/massages" />
+
+          <Route path="/massages">
+            <MassagesRoute />
+          </Route>
+
+          <Route path="/contacts">
+            <Contacts />
+          </Route>
         </div>
-        <hr />
-        
-        
-        <Redirect to="/massages" />
-
-        <Route path="/massages">
-          <MassagesRoute />
-        </Route>
-
-        
-        <Route path="/contacts">
-          <Contacts />
-        </Route>
-       
-      </div>
-    </Router>
+      </Router>
+    </IntlProvider>
   );
 }
 
-
-
 function MassagesRoute() {
-  
-
   return (
     <Router>
-     
-
       <Massages />
-     
+
       <About />
-      
+
       <Contacts />
     </Router>
   );
 }
-
-
 
 function Contacts() {
   const diplomas = [
@@ -174,7 +163,7 @@ function Contacts() {
             marginLeft: 20,
           }}
         >
-          <h1 style={{marginTop: 1}}>Солтынчук Евгений Леонидович</h1>
+          <h1 style={{ marginTop: 1 }}>Солтынчук Евгений Леонидович</h1>
           <h2>Email: bigmavr5@gmail.com</h2>
           <h3>Phone: +38 093 110 44 35; +38 066 118 16 08;</h3>
         </div>
@@ -185,9 +174,6 @@ function Contacts() {
           return <Tile src={image} />;
         })}
       </Masonry>
-
-      
     </div>
   );
 }
-
