@@ -69,7 +69,7 @@ export const About = () => {
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Обучение, практика и работа.
+              <FormattedMessage id="Study, practice and work"/>
             </Typography>
             <Typography>
               Работал массажистом с профессиональными танцорами, гимнастами и

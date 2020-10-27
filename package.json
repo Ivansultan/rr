@@ -26,11 +26,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "trans:extract": "formatjs extract ./src/**/*.tsx --out-file ./src/translations/source.json",
-    "trans:compile_ru": "formatjs compile ./src/translations/source.json --format ./src/translations/compile_ru.js --out-file ./src/translations/ru.json",
-    "trans:compile_en": "formatjs compile ./src/translations/source.json --format ./src/translations/compile_en.js --out-file ./src/translations/en.json",
+    "trans:extract": "yarn formatjs extract ./src/**/*.tsx --out-file ./src/translations/source.json --extract-from-format-message-call",
+    "trans:compile_ru": "yarn formatjs compile ./src/translations/source.json --format ./src/translations/compile_ru.js --out-file ./src/translations/ru.json",
+    "trans:compile_en": "yarn formatjs compile ./src/translations/source.json --format ./src/translations/compile_en.js --out-file ./src/translations/en.json",
     "trans": "yarn trans:extract; yarn trans:compile_ru; yarn trans:compile_en"
   },
   "eslintConfig": {

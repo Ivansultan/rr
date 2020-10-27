@@ -7,11 +7,11 @@ import {
   makeStyles,
   CardActionArea,
 } from "@material-ui/core";
-import { massagesData } from "./constants";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import MasonryLayout from "../MasonryLayout/MasonryLayout";
+import { FormattedMessage } from "react-intl";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type ExtraInfo = {
@@ -20,7 +20,7 @@ type ExtraInfo = {
 };
 
 export type Massage = {
-  title: string;
+  title: any;
   shortDescription: string;
   description: string;
   images: any[];
@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12,
   },
   media: {
-    
     paddingTop: "56.25%", // 16:9
     height: "100%",
     width: "100%",
@@ -68,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-   
+
     overflow: "scroll",
     height: 500,
     maxWidth: 600,
@@ -76,27 +75,172 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Massages = (props: Props) => {
+  const massagesData: MassageList = {
+    japanese: {
+      title: <FormattedMessage id="Japanies" />,
+      shortDescription: "Юмейхо терапия 1 ступень (японская техника массажа) ",
+      description:
+        "Юмейхо терапия 1 ступень (японская техника массажа) Построена на основе биомеханики тела и влиянии смещения центра тяжести костей таза, на здоровье человека. Юмейхо терапия включает в себя лимфатический массаж всего тела, мягкую мануальную терапию и проработку мышц всего тела.",
+      images: [
+        require("./media/japanese(1).jpg"),
+        require("./media/japanese(2).png"),
+        require("./media/japanese(3).jpg"),
+        require("./media/japanese(4).jpg"),
+      ],
+      extraInfo: [
+        {
+          title:
+            "Благодаря системному и комплексному подходу двух техник (Юмейхо 1,2 ступень), решаются такие проблемы как:",
+          items: [
+            "Головные боли",
+            "Болезненные месячные",
+            "Боли в шее, спине, пояснице",
+            "Повышенная утомляемость",
+            "Плохой сон",
+            "Сколиоз",
+            "Боли в суставах",
+            "Высокое и низкое давление",
+            "Расстройства пищеварения",
+          ],
+        },
+        {
+          title: "УЛУЧШАЕТСЯ:",
+          items: [
+            "Продуктивность работы",
+            "Регенерация тканей",
+            "Укрепляется иммунная система",
+            "Нормализуется обмен веществ",
+            "Профилактика заболеваний",
+            "Сексуальное желание",
+            "Осанка",
+            "Кровообращение во всем теле",
+          ],
+        },
+      ],
+    },
+    vietnamese: {
+      title: "Вьетнамский",
+      shortDescription:
+        "Юмейхо терапия 2 ступень (вьетнамская техника массажа)",
+      description:
+        "Юмейхо терапия 2 ступень (вьетнамская техника массажа) Это система специально подобранных приемов обдавливания, скруток и растяжек (основанных на приемах боевых искусств), направленных на глубокую проработку мышц и связок, снятия напряжения со всего тела и увеличения объема движения суставов.",
+      images: [
+        require("./media/vietnamese(1).jpg"),
+        require("./media/vietnamese(2).jpg"),
+        require("./media/vietnamese(3).jpg"),
+        require("./media/vietnamese(4).jpg"),
+        require("./media/vietnamese(5).jpg"),
+      ],
+
+      extraInfo: [
+        {
+          title:
+            "Благодаря системному и комплексному подходу двух техник (Юмейхо 1,2 ступень), решаются такие проблемы как:",
+          items: [
+            "Головные боли",
+            "Болезненные месячные",
+            "Боли в шее, спине, пояснице",
+            "Повышенная утомляемость",
+            "Плохой сон",
+            "Сколиоз",
+            "Боли в суставах",
+            "Высокое и низкое давление",
+            "Расстройства пищеварения",
+          ],
+        },
+        {
+          title: "Улучшается:",
+          items: [
+            "Продуктивность работы",
+            "Регенерация тканей",
+            "Укрепляется иммунная система",
+            "Нормализуется обмен веществ",
+            "Профилактика заболеваний",
+            "Сексуальное желание",
+            "Осанка",
+            "Кровообращение во всем теле",
+          ],
+        },
+      ],
+    },
+    relaxing: {
+      title: "Расслабляющий",
+      shortDescription: "Массаж шейно-воротниковой зоны",
+      description:
+        "Массаж шейно-воротниковой зоны.  Включает в себя проработку шеи, грудного отдела и плечевого пояса. ",
+      images: [
+        require("./media/relaxing(1).jpg"),
+        require("./media/relaxing(2).jpg"),
+        require("./media/relaxing(3).jpg"),
+        require("./media/relaxing(4).jpg"),
+      ],
+
+      extraInfo: [
+        {
+          title: "",
+          items: [
+            "Расслабляет мышцы шейно-воротниковой зоны",
+            "Улучшает кровообращение и обмен веществ в шейном отделе.",
+            "Ускоряет отток лимфы.",
+            "Улучшает кровоснабжение головного мозга.",
+            "Убирает боли в зоне головы, шеи и спины.",
+            "Устраняет перенапряжение и скованность в мышцах.",
+            "Нормализуется сон.",
+            "Улучшается работа нервной системы",
+          ],
+        },
+      ],
+    },
+    visceral: {
+      title: "Массаж живота",
+      shortDescription: "Висцеральная хиропрактика(массаж живота)",
+      description:
+        "Висцеральная хиропрактика (массаж живота) Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них. Помогает справляться с широким спектром ослабления функций органов всего тела.",
+      images: [
+        require("./media/visceral(1).jpg"),
+        require("./media/visceral(2).jpg"),
+        require("./media/visceral(3).jpg"),
+        require("./media/visceral(4).jpg"),
+      ],
+
+      extraInfo: [
+        {
+          title: "Массаж живота устраняет:",
+          items: [
+            "Дисфункции работы желудочно-кишечного тракта",
+            "Патологии работы почек",
+            "Нарушение работы половой системы у мужчин и женщин",
+            "Плохая циркуляция крови",
+            "Недуги органов дыхания",
+            "Воспаление поджелудочной железы, ослабление работы печени и желчного пузыря.",
+          ],
+        },
+        {
+          title: "Улучшает:",
+          items: [
+            "Работу сердечно-сосудистой системы",
+            "Метаболизм",
+            "Корректирует избыточный вес",
+            "Психоэмоциональное состояние",
+            "Профилактика простудных заболеваний и стимуляция иммунной системы.",
+          ],
+        },
+      ],
+    },
+  };
+
   const classes = useStyles();
 
-  
   const [open, setOpen] = React.useState(false);
-  
 
   const [activeMassage, setActiveMassage] = React.useState<Massage | undefined>(
     undefined
   );
 
-  
-
-  const handleCardInfo = (
-    
-    massage?: Massage
-  ) => {
-
+  const handleCardInfo = (massage?: Massage) => {
     setOpen(!open);
 
     setActiveMassage(massage);
-    
   };
 
   console.log("activeMassage?.images", activeMassage?.images);
@@ -104,7 +248,6 @@ export const Massages = (props: Props) => {
   return (
     <div
       style={{
-        
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
@@ -122,14 +265,7 @@ export const Massages = (props: Props) => {
             }}
             className={classes.root}
           >
-            <CardActionArea
-              onClick={() =>
-                handleCardInfo(
-                  massage
-                  
-                )
-              }
-            >
+            <CardActionArea onClick={() => handleCardInfo(massage)}>
               <Typography
                 className={classes.title}
                 color="textSecondary"
@@ -150,13 +286,10 @@ export const Massages = (props: Props) => {
                   {}
                 </Typography>
               </CardContent>
-             
             </CardActionArea>
           </Card>
         );
       })}
-
-      
 
       <Modal
         aria-labelledby="transition-modal-title"
@@ -205,4 +338,3 @@ export const Massages = (props: Props) => {
     </div>
   );
 };
-

@@ -17,7 +17,7 @@ const messages = {
   ru: Russian,
 };
 
-const locale = "ru";
+const locale = "en";
 
 let brakePoints = [350, 500, 750];
 
