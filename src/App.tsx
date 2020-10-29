@@ -46,7 +46,7 @@ export default function App() {
           >
             <div
               style={{
-                marginRight: 15,
+                marginLeft: 50,
               }}
               onClick={() => {
                 alert("Redirect to home page");
@@ -60,6 +60,7 @@ export default function App() {
             </div>
             <div
               style={{
+                flex: 1,
                 flexDirection: "column",
                 alignItems: "center",
                 display: "flex",
@@ -163,9 +164,13 @@ function Contacts() {
             marginLeft: 20,
           }}
         >
-          <h1 style={{ marginTop: 1 }}>Солтынчук Евгений Леонидович</h1>
+          <h1 style={{ marginTop: 1 }}>
+            <FormattedMessage id="Evgeny Soltynchuk "/>
+            </h1>
           <h2>Email: bigmavr5@gmail.com</h2>
-          <h3>Phone: +38 093 110 44 35; +38 066 118 16 08;</h3>
+          <h3>
+            <FormattedMessage id="Phone: +38 093 110 44 35; +38 066 118 16 08;"/>
+            </h3>
         </div>
       </div>
 

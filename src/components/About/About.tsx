@@ -72,11 +72,7 @@ export const About = () => {
               <FormattedMessage id="Study, practice and work"/>
             </Typography>
             <Typography>
-              Работал массажистом с профессиональными танцорами, гимнастами и
-              цирковыми акробатами. Благодаря 20-ти летнему танцевальному стажу,
-              есть опыт техники восстановления тела после травм, переломов,
-              растяжений, физической и эмоциональной перегрузке , а также по
-              биомеханике тела и работы мышц.
+              <FormattedMessage id="At the moment he is a certified specialist in the field of rehabilitation massage, with 5 years of experience. He has worked with acrobats, gymnasts and professional dancers. Thanks to 20 years of dancing experience, he has experience in the technique of recovery the body after injuries, fractures, sprains, physical and emotional overload, as well as in the biomechanics of the body and muscle work."/>
             </Typography>
           </Paper>
         </TimelineContent>
@@ -97,11 +93,10 @@ export const About = () => {
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Работа
+              <FormattedMessage id="Work " />
             </Typography>
             <Typography>
-              Работа на круизных лайнерах компаний как "Cunard", "Princess
-              Cruises" в качестве профессионального танцора.
+              <FormattedMessage id="He worked for American companies Cunard, Princess for 11 years as a professional dancer."/>
             </Typography>
           </Paper>
         </TimelineContent>
@@ -122,11 +117,10 @@ export const About = () => {
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Образование
+              <FormattedMessage id="Education" />
             </Typography>
             <Typography>
-              выпускник университета им. М. П. Драгоманова, педагогический
-              факультет.
+              <FormattedMessage id="Higher education, pedagogical."/>
             </Typography>
           </Paper>
         </TimelineContent>

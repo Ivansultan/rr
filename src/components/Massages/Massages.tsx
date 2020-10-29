@@ -20,9 +20,9 @@ type ExtraInfo = {
 };
 
 export type Massage = {
-  title: any;
-  shortDescription: string;
-  description: string;
+  title: React.ReactElement;
+  shortDescription: React.ReactElement;
+  description: React.ReactElement;
   images: any[];
   extraInfo: ExtraInfo[];
 };
@@ -77,10 +77,10 @@ const useStyles = makeStyles((theme) => ({
 export const Massages = (props: Props) => {
   const massagesData: MassageList = {
     japanese: {
-      title: <FormattedMessage id="Japanies" />,
-      shortDescription: "Юмейхо терапия 1 ступень (японская техника массажа) ",
+      title: <FormattedMessage id="Japanese" />,
+      shortDescription: <FormattedMessage id="Yumeiho therapy 1 stage (Japanese massage technique) "/>,
       description:
-        "Юмейхо терапия 1 ступень (японская техника массажа) Построена на основе биомеханики тела и влиянии смещения центра тяжести костей таза, на здоровье человека. Юмейхо терапия включает в себя лимфатический массаж всего тела, мягкую мануальную терапию и проработку мышц всего тела.",
+        <FormattedMessage id="Yumeiho therapy 1 stage (Japanese massage technique) Built on the basis of body biomechanics and the effect of the displacement of the center of gravity of the pelvic bones on human health.Yumeiho therapy includes full body lymphatic massage, gentle manual therapy and full body muscle work." />,
       images: [
         require("./media/japanese(1).jpg"),
         require("./media/japanese(2).png"),
@@ -119,11 +119,11 @@ export const Massages = (props: Props) => {
       ],
     },
     vietnamese: {
-      title: "Вьетнамский",
+      title: <FormattedMessage id="Vietnamese"/>,
       shortDescription:
-        "Юмейхо терапия 2 ступень (вьетнамская техника массажа)",
+        <FormattedMessage id="Yumeiho therapy stage 2 (Vietnamese massage technique)"/>,
       description:
-        "Юмейхо терапия 2 ступень (вьетнамская техника массажа) Это система специально подобранных приемов обдавливания, скруток и растяжек (основанных на приемах боевых искусств), направленных на глубокую проработку мышц и связок, снятия напряжения со всего тела и увеличения объема движения суставов.",
+        <FormattedMessage id="Yumeiho therapy stage 2 (Vietnamese massage technique) It is a system of specially selected techniques of compression, twisting and stretch marks (based on martial arts techniques) aimed at deep development of muscles and ligaments, relieving tension from the whole body and increasing the volume of joint movement."/>,
       images: [
         require("./media/vietnamese(1).jpg"),
         require("./media/vietnamese(2).jpg"),
@@ -164,10 +164,10 @@ export const Massages = (props: Props) => {
       ],
     },
     relaxing: {
-      title: "Расслабляющий",
-      shortDescription: "Массаж шейно-воротниковой зоны",
+      title: <FormattedMessage id="Relaxing"/>,
+      shortDescription: <FormattedMessage id="Neck and collar zone (relaxing massage)"/>,
       description:
-        "Массаж шейно-воротниковой зоны.  Включает в себя проработку шеи, грудного отдела и плечевого пояса. ",
+        <FormattedMessage id="Массаж шейно-воротниковой зоны.  Включает в себя проработку шеи, грудного отдела и плечевого пояса. "/>,
       images: [
         require("./media/relaxing(1).jpg"),
         require("./media/relaxing(2).jpg"),
@@ -192,10 +192,10 @@ export const Massages = (props: Props) => {
       ],
     },
     visceral: {
-      title: "Массаж живота",
-      shortDescription: "Висцеральная хиропрактика(массаж живота)",
+      title: <FormattedMessage id="Abdominal"/>,
+      shortDescription: <FormattedMessage id="Visceral chiropractic (abdominal massage)"/>,
       description:
-        "Висцеральная хиропрактика (массаж живота) Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них. Помогает справляться с широким спектром ослабления функций органов всего тела.",
+        <FormattedMessage id="Висцеральная хиропрактика (массаж живота) Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них. Помогает справляться с широким спектром ослабления функций органов всего тела."/>,
       images: [
         require("./media/visceral(1).jpg"),
         require("./media/visceral(2).jpg"),
