@@ -46,7 +46,7 @@ export default function App() {
           >
             <div
               style={{
-                marginLeft: 50,
+                marginLeft: 25,
               }}
               onClick={() => {
                 alert("Redirect to home page");
