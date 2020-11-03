@@ -37,15 +37,16 @@ export default function App() {
         <div>
           <div
             style={{
+             // backgroundColor: "gray",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-around",
               alignItems: "center",
-              padding: 15,
             }}
           >
             <div
               style={{
+               // backgroundColor: "red",
                 marginLeft: 25,
               }}
               onClick={() => {
@@ -55,24 +56,26 @@ export default function App() {
               <img
                 alt="jestHand"
                 src={require("./components/Massages/media/jensHand.png")}
-                width="80"
+                width="60"
               />
             </div>
             <div
               style={{
+              //  backgroundColor: "green",
                 flex: 1,
                 flexDirection: "column",
+                justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
               }}
             >
-              <div>
-                <h1 style={{ textAlign: "center" }}>
+              
+                <h1 style={{ textAlign: "center", marginTop: 7, marginBottom: 7 }}>
                 <FormattedMessage id="Massage to relax and rehab"/>
                 </h1>
-              </div>
+              
 
-              <div style={{}}>
+              <div>
                 <FormGroup>
                   <Typography component="div">
                     <Grid
@@ -161,7 +164,7 @@ function Contacts() {
 
         <div
           style={{
-            marginLeft: 20,
+            marginLeft: 10,
           }}
         >
           <h1 style={{ marginTop: 1 }}>

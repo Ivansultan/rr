@@ -45,10 +45,7 @@ export const About = () => {
               <FormattedMessage id="Information"/>
             </Typography>
             <Typography>
-              Все вышеперечисленные виды массажа, хорошо работают, как для
-              мужчин , так и для женщин. И в зависимости от состояния здоровья и
-              физической кондиции человека, могут исполняться с легкой, средней
-              и интенсивной нагрузкой.
+              <FormattedMessage id="All of the above types of massage work well for both men and women. Depending on the person’s health status and physical condition, they can be performed in mild, medium and intense manner."/>
             </Typography>
           </Paper>
         </TimelineContent>
@@ -72,7 +69,7 @@ export const About = () => {
               <FormattedMessage id="Study, practice and work"/>
             </Typography>
             <Typography>
-              <FormattedMessage id="At the moment he is a certified specialist in the field of rehabilitation massage, with 5 years of experience. He has worked with acrobats, gymnasts and professional dancers. Thanks to 20 years of dancing experience, he has experience in the technique of recovery the body after injuries, fractures, sprains, physical and emotional overload, as well as in the biomechanics of the body and muscle work."/>
+              <FormattedMessage id="At the moment he is a certified specialist in the field of rehabilitation massage, with 5 years of experience. I have worked with acrobats, gymnasts and professional dancers. Thanks to 20-year dancing experience, I have mastered the techniques of body recovery from injuries, fractures, sprains, physical and emotional overload, as well as in the biomechanics of the body and muscle work."/>
             </Typography>
           </Paper>
         </TimelineContent>
@@ -96,7 +93,7 @@ export const About = () => {
               <FormattedMessage id="Work " />
             </Typography>
             <Typography>
-              <FormattedMessage id="He worked for American companies Cunard, Princess for 11 years as a professional dancer."/>
+              <FormattedMessage id="I have worked in the American companies Cunard, Princess for 11 years as a professional dancer."/>
             </Typography>
           </Paper>
         </TimelineContent>
@@ -120,7 +117,7 @@ export const About = () => {
               <FormattedMessage id="Education" />
             </Typography>
             <Typography>
-              <FormattedMessage id="Higher education, pedagogical."/>
+              <FormattedMessage id="I have a graduate degree in Pedagogy."/>
             </Typography>
           </Paper>
         </TimelineContent>

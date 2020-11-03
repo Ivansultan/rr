@@ -15,8 +15,8 @@ import { FormattedMessage } from "react-intl";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type ExtraInfo = {
-  title: string;
-  items: string[];
+  title: React.ReactFragment;
+  items: React.ReactElement[];
 };
 
 export type Massage = {
@@ -78,42 +78,44 @@ export const Massages = (props: Props) => {
   const massagesData: MassageList = {
     japanese: {
       title: <FormattedMessage id="Japanese" />,
-      shortDescription: <FormattedMessage id="Yumeiho therapy 1 stage (Japanese massage technique) "/>,
+      shortDescription: <FormattedMessage id="Yumeiho therapy dan 1 (Japanese massage technique) "/>,
       description:
-        <FormattedMessage id="Yumeiho therapy 1 stage (Japanese massage technique) Built on the basis of body biomechanics and the effect of the displacement of the center of gravity of the pelvic bones on human health.Yumeiho therapy includes full body lymphatic massage, gentle manual therapy and full body muscle work." />,
+        <FormattedMessage id="Yumeiho therapy dan 1 (Japanese massage technique) It is based on the body biomechanics and the effect of centere-of-gravity shift of the pelvic bones on human health.Yumeiho therapy includes the whole body lymphatic massage, gentle manual therapy and whole body muscle massage." />,
       images: [
-        require("./media/japanese(1).jpg"),
-        require("./media/japanese(2).png"),
-        require("./media/japanese(3).jpg"),
-        require("./media/japanese(4).jpg"),
+        require("./media/japanese1.jpg"),
+        require("./media/japanese2.jpg"),
+        require("./media/japanese3.jpg"),
+        require("./media/japanese4.jpg"),
       ],
       extraInfo: [
         {
           title:
-            "Благодаря системному и комплексному подходу двух техник (Юмейхо 1,2 ступень), решаются такие проблемы как:",
+            <FormattedMessage id="Applying these two techniques systematically and comprehensively (Yumeiho therapy dan 1,2), such problems are solved as:"/>, 
           items: [
-            "Головные боли",
-            "Болезненные месячные",
-            "Боли в шее, спине, пояснице",
-            "Повышенная утомляемость",
-            "Плохой сон",
-            "Сколиоз",
-            "Боли в суставах",
-            "Высокое и низкое давление",
-            "Расстройства пищеварения",
+               <FormattedMessage id="Headaches"/>,
+               <FormattedMessage id="Painful menstruation"/>,
+               <FormattedMessage id="Neck, back, lumbar pain"/>,
+               <FormattedMessage id="Increased fatigability"/>,
+               <FormattedMessage id="Poor sleep quality"/>,
+               <FormattedMessage id="Scoliosis"/>,
+               <FormattedMessage id="Joint pain"/>,
+               <FormattedMessage id="Hyper and hypotension"/>,
+               <FormattedMessage id="Digestive disorders"/>,
           ],
+          
         },
         {
-          title: "УЛУЧШАЕТСЯ:",
+          title: <FormattedMessage id="It improves:"/>,
           items: [
-            "Продуктивность работы",
-            "Регенерация тканей",
-            "Укрепляется иммунная система",
-            "Нормализуется обмен веществ",
-            "Профилактика заболеваний",
-            "Сексуальное желание",
-            "Осанка",
-            "Кровообращение во всем теле",
+               <FormattedMessage id="Work productivity"/>,
+               <FormattedMessage id="Tissue regeneration"/>,
+               <FormattedMessage id="The immune system, which is fortified"/>,
+               <FormattedMessage id="Metabolism, which is normalized"/>,
+               <FormattedMessage id="Disease prevention"/>,
+               <FormattedMessage id="Sexual desire"/>,
+               <FormattedMessage id="Posture"/>,
+               <FormattedMessage id="Circulation throughout the body"/>,
+
           ],
         },
       ],
@@ -121,53 +123,54 @@ export const Massages = (props: Props) => {
     vietnamese: {
       title: <FormattedMessage id="Vietnamese"/>,
       shortDescription:
-        <FormattedMessage id="Yumeiho therapy stage 2 (Vietnamese massage technique)"/>,
+        <FormattedMessage id="Yumeiho therapy dan 2 (Vietnamese massage technique)"/>,
       description:
-        <FormattedMessage id="Yumeiho therapy stage 2 (Vietnamese massage technique) It is a system of specially selected techniques of compression, twisting and stretch marks (based on martial arts techniques) aimed at deep development of muscles and ligaments, relieving tension from the whole body and increasing the volume of joint movement."/>,
+        <FormattedMessage id="Yumeiho therapy dan 2 (Vietnamese massage technique) This is a system of specially selected compressions, twists and stretches (based on martial arts techniques) aimed at deeply massaging muscles and ligaments, relieving stress from the whole body and increasing the joint range of motions."/>,
       images: [
-        require("./media/vietnamese(1).jpg"),
-        require("./media/vietnamese(2).jpg"),
-        require("./media/vietnamese(3).jpg"),
-        require("./media/vietnamese(4).jpg"),
-        require("./media/vietnamese(5).jpg"),
+        require("./media/vietnamese1.jpg"),
+        require("./media/vietnamese2.jpg"),
+        require("./media/vietnamese3.jpg"),
+        require("./media/vietnamese4.jpg"),
       ],
 
       extraInfo: [
         {
           title:
-            "Благодаря системному и комплексному подходу двух техник (Юмейхо 1,2 ступень), решаются такие проблемы как:",
+            <FormattedMessage id="Applying these two techniques systematically and comprehensively (Yumeiho therapy dan 1,2), such problems are solved as:"/>,
           items: [
-            "Головные боли",
-            "Болезненные месячные",
-            "Боли в шее, спине, пояснице",
-            "Повышенная утомляемость",
-            "Плохой сон",
-            "Сколиоз",
-            "Боли в суставах",
-            "Высокое и низкое давление",
-            "Расстройства пищеварения",
+               <FormattedMessage id="Headaches"/>,
+               <FormattedMessage id="Painful menstruation"/>,
+               <FormattedMessage id="Neck, back, lumbar pain"/>,
+               <FormattedMessage id="Increased fatigability"/>,
+               <FormattedMessage id="Poor sleep quality"/>,
+               <FormattedMessage id="Scoliosis"/>,
+               <FormattedMessage id="Joint pain"/>,
+               <FormattedMessage id="Hyper and hypotension"/>,
+               <FormattedMessage id="Digestive disorders"/>,
+
           ],
         },
         {
-          title: "Улучшается:",
+          title: <FormattedMessage id="It improves:"/>,
           items: [
-            "Продуктивность работы",
-            "Регенерация тканей",
-            "Укрепляется иммунная система",
-            "Нормализуется обмен веществ",
-            "Профилактика заболеваний",
-            "Сексуальное желание",
-            "Осанка",
-            "Кровообращение во всем теле",
+               <FormattedMessage id="Work productivity"/>,
+               <FormattedMessage id="Tissue regeneration"/>,
+               <FormattedMessage id="The immune system, which is fortified"/>,
+               <FormattedMessage id="Metabolism, which is normalized"/>,
+               <FormattedMessage id="Disease prevention"/>,
+               <FormattedMessage id="Sexual desire"/>,
+               <FormattedMessage id="Posture"/>,
+               <FormattedMessage id="Circulation throughout the body"/>,
+
           ],
         },
       ],
     },
     relaxing: {
-      title: <FormattedMessage id="Relaxing"/>,
-      shortDescription: <FormattedMessage id="Neck and collar zone (relaxing massage)"/>,
+      title: <FormattedMessage id="Remedial & Relaxing"/>,
+      shortDescription: <FormattedMessage id="Neck-collar area (remedial and relaxing massage)"/>,
       description:
-        <FormattedMessage id="Массаж шейно-воротниковой зоны.  Включает в себя проработку шеи, грудного отдела и плечевого пояса. "/>,
+        <FormattedMessage id="Neck-collar area massage. It is focused on the muscles around the neck, chest, and shoulder area."/>,
       images: [
         require("./media/relaxing(1).jpg"),
         require("./media/relaxing(2).jpg"),
@@ -179,14 +182,14 @@ export const Massages = (props: Props) => {
         {
           title: "",
           items: [
-            "Расслабляет мышцы шейно-воротниковой зоны",
-            "Улучшает кровообращение и обмен веществ в шейном отделе.",
-            "Ускоряет отток лимфы.",
-            "Улучшает кровоснабжение головного мозга.",
-            "Убирает боли в зоне головы, шеи и спины.",
-            "Устраняет перенапряжение и скованность в мышцах.",
-            "Нормализуется сон.",
-            "Улучшается работа нервной системы",
+            <FormattedMessage id="Relaxes the muscles of the neck and collar area"/>,
+            <FormattedMessage id="Improves blood circulation and metabolism in the cervical spine."/>,
+            <FormattedMessage id="Accelerates the lymph drainage"/>,
+            <FormattedMessage id="Improves the cerebral circulation"/>,
+            <FormattedMessage id="Relieves pain in the head, neck, and back area"/>,
+            <FormattedMessage id="Eliminates tight and stiff muscles"/>,
+            <FormattedMessage id="Normalizes sleep"/>,
+            <FormattedMessage id="Improves the nervous system function"/>,
           ],
         },
       ],
@@ -195,7 +198,7 @@ export const Massages = (props: Props) => {
       title: <FormattedMessage id="Abdominal"/>,
       shortDescription: <FormattedMessage id="Visceral chiropractic (abdominal massage)"/>,
       description:
-        <FormattedMessage id="Висцеральная хиропрактика (массаж живота) Это техника воздействия руками на внутренние органы посредством надавливания, простукивания, сдвижения, массажа, с целью восстановления правильного положения органов и микроциркуляции вокруг них. Помогает справляться с широким спектром ослабления функций органов всего тела."/>,
+        <FormattedMessage id="Visceral chiropractic (abdominal massage) This is a massage technique for influencing internal organs through compression, pounding, kneading, effleurage to recover the correct organ positions and microcirculation around them. It helps to manage a wide range of organ dysfunctions throughout the body."/>,
       images: [
         require("./media/visceral(1).jpg"),
         require("./media/visceral(2).jpg"),
@@ -205,24 +208,24 @@ export const Massages = (props: Props) => {
 
       extraInfo: [
         {
-          title: "Массаж живота устраняет:",
+          title: <FormattedMessage id="Abdominal massage eliminates:"/>,
           items: [
-            "Дисфункции работы желудочно-кишечного тракта",
-            "Патологии работы почек",
-            "Нарушение работы половой системы у мужчин и женщин",
-            "Плохая циркуляция крови",
-            "Недуги органов дыхания",
-            "Воспаление поджелудочной железы, ослабление работы печени и желчного пузыря.",
+             <FormattedMessage id="Gastrointestinal tract dysfunctions"/>,
+             <FormattedMessage id="Kidney pathologies"/>,
+             <FormattedMessage id="Reproductive system disorders in men and women"/>,
+             <FormattedMessage id="Poor blood circulation"/>,
+             <FormattedMessage id="Respiratory diseases"/>,
+             <FormattedMessage id="Pancreatitis, the liver and gallbladder dysfunctions."/>,
           ],
         },
         {
-          title: "Улучшает:",
+          title: <FormattedMessage id="It improves:"/>,
           items: [
-            "Работу сердечно-сосудистой системы",
-            "Метаболизм",
-            "Корректирует избыточный вес",
-            "Психоэмоциональное состояние",
-            "Профилактика простудных заболеваний и стимуляция иммунной системы.",
+             <FormattedMessage id="The cardiovascular system function"/>,
+             <FormattedMessage id="Metabolism"/>,
+             <FormattedMessage id="Corrects overweight"/>,
+             <FormattedMessage id="Psychoemotional state"/>,
+             <FormattedMessage id="Catarrhal diseases prevention and immune system stimulation."/>,
           ],
         },
       ],
