@@ -42,6 +42,7 @@ export default function App() {
               flexDirection: "row",
               justifyContent: "space-around",
               alignItems: "center",
+              marginRight: 25
             }}
           >
             <div
