@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d8d816ea0592ae3c74fcc4bcec35e5f9",
+    "revision": "93dfdbbbcf2c5d2a036f3baeee102dd2",
     "url": "/rr/index.html"
   },
   {
-    "revision": "3e8e9ab886af68a7b344",
+    "revision": "037e70bee3be34b621e8",
     "url": "/rr/static/css/main.8f41e826.chunk.css"
   },
   {
-    "revision": "76d43e54afd8b8cf0050",
-    "url": "/rr/static/js/2.3b4fc8ca.chunk.js"
+    "revision": "2019c79b245a58071bff",
+    "url": "/rr/static/js/2.06137395.chunk.js"
   },
   {
     "revision": "1937a0fc6634269e5f47f8181e27fdc7",
-    "url": "/rr/static/js/2.3b4fc8ca.chunk.js.LICENSE.txt"
+    "url": "/rr/static/js/2.06137395.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3e8e9ab886af68a7b344",
-    "url": "/rr/static/js/main.c16bcfff.chunk.js"
+    "revision": "037e70bee3be34b621e8",
+    "url": "/rr/static/js/main.9d8bee8f.chunk.js"
   },
   {
     "revision": "3eb9276817f6a062030a",
@@ -44,20 +44,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rr/static/media/diploma(4).f217ab3a.jpg"
   },
   {
-    "revision": "f8fa5ad011e56770c7c7e9374bb5c578",
-    "url": "/rr/static/media/japanese1.f8fa5ad0.jpg"
+    "revision": "14f16fd11609ca15f3f470e9cceae4d6",
+    "url": "/rr/static/media/japanese(1).14f16fd1.jpg"
   },
   {
-    "revision": "a0f148521714935c9ef463cf6b0b852a",
-    "url": "/rr/static/media/japanese2.a0f14852.jpg"
+    "revision": "2a2ef0173f01aa14c9d97d570229eee5",
+    "url": "/rr/static/media/japanese(2).2a2ef017.png"
   },
   {
-    "revision": "beb6017fcd06a8ea97c701d53c54041c",
-    "url": "/rr/static/media/japanese3.beb6017f.jpg"
+    "revision": "b7ab0182a159aa46c4c49dfdd7c6a3a7",
+    "url": "/rr/static/media/japanese(3).b7ab0182.jpg"
   },
   {
-    "revision": "c423c09451cfaa9513e1e826e8ebe3fb",
-    "url": "/rr/static/media/japanese4.c423c094.jpg"
+    "revision": "eae15a375964954abdf5a51e2077f175",
+    "url": "/rr/static/media/japanese(4).eae15a37.jpg"
   },
   {
     "revision": "29cc1f6009496473abd4721eb40af9bc",
@@ -80,20 +80,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rr/static/media/relaxing(4).9d2b3fd5.jpg"
   },
   {
-    "revision": "615defec8cea19a8f770a508936f19eb",
-    "url": "/rr/static/media/vietnamese1.615defec.jpg"
+    "revision": "9fa2f1e1916f587e08f37b5115a91b3b",
+    "url": "/rr/static/media/vietnamese(1).9fa2f1e1.jpg"
   },
   {
-    "revision": "d62abe8695ee1a440f0d12abcd94fecf",
-    "url": "/rr/static/media/vietnamese2.d62abe86.jpg"
+    "revision": "0a3f159d188bccbdfb09f01bdd8901ce",
+    "url": "/rr/static/media/vietnamese(2).0a3f159d.jpg"
   },
   {
-    "revision": "975a7378b9f1346bdc02f09cb941921c",
-    "url": "/rr/static/media/vietnamese3.975a7378.jpg"
-  },
-  {
-    "revision": "b1527291175dfa572cae69d8daf624eb",
-    "url": "/rr/static/media/vietnamese4.b1527291.jpg"
+    "revision": "c448a1ae881aff6c733d81267d848a25",
+    "url": "/rr/static/media/vietnamese(3).c448a1ae.jpg"
   },
   {
     "revision": "e2338929b65cfaec7b8a61ace01130fe",
