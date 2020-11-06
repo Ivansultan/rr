@@ -2,7 +2,7 @@
   "name": "rr",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Ivansultan.github.io/rr",
+  "homepage": "https://relax-rehab.me",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build ",
     "trans:extract": "yarn formatjs extract ./src/**/*.tsx --out-file ./src/translations/source.json --extract-from-format-message-call",
     "trans:compile_ru": "yarn formatjs compile ./src/translations/source.json --format ./src/translations/compile_ru.js --out-file ./src/translations/ru.json",
     "trans:compile_en": "yarn formatjs compile ./src/translations/source.json --format ./src/translations/compile_en.js --out-file ./src/translations/en.json",
