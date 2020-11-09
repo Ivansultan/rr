@@ -45,6 +45,7 @@ export const Tile = ({ src }: TileProps) => {
 type MasonryProps = {
   brakePoints: number[];
   children: any;
+  cardStyle?: {}
 };
 
 type MasonryState = {
@@ -108,7 +109,10 @@ export class Masonry extends React.Component<MasonryProps, MasonryState> {
               {col.map(
                 // @ts-ignore
                 (child, i) => {
-                  return <div key={i}> {child} </div>;
+                  return <div style={{
+                     borderRadius: 20,
+                    ...this.props.cardStyle
+                  }} key={i}> {child} </div>;
                 }
               )}
             </div>

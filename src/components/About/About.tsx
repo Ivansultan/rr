@@ -13,22 +13,14 @@ import SchoolIcon from "@material-ui/icons/School";
 import InfoIcon from "@material-ui/icons/Info";
 import Paper from "@material-ui/core/Paper";
 
-import { makeStyles } from "@material-ui/core/styles";
 import { FormattedMessage } from "react-intl";
+import { useStyles } from "./styles";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: "6px 16px",
-  },
-  secondaryTail: {
-    backgroundColor: theme.palette.secondary.main,
-  },
-}));
 
 export const About = () => {
   const classes = useStyles();
   return (
-    <Timeline style={{marginTop: 80}} align="alternate">
+    <Timeline className={classes.root} align="alternate">
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary"></Typography>

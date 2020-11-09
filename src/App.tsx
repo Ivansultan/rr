@@ -1,16 +1,17 @@
 import React from "react";
 import { About } from "./components/About/About";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import avatar from "./images/contacts.png";
+
 import { Massages } from "./components/Massages/Massages";
 import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import FormGroup from "@material-ui/core/FormGroup";
-import { Masonry, Tile } from "./components/MasonryLayout/MasonryLayout";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import Russian from "./translations/ru.json";
 import English from "./translations/en.json";
+import Contacts from "./components/Contacts";
+
 
 const messages = {
   en: English,
@@ -19,7 +20,7 @@ const messages = {
 
 const locale = "en";
 
-let brakePoints = [350, 500, 750];
+
 
 export default function App() {
   const handleChange = (event: any) => {
@@ -42,7 +43,6 @@ export default function App() {
               flexDirection: "row",
               justifyContent: "space-around",
               alignItems: "center",
-              marginRight: 25
             }}
           >
             <div
@@ -62,12 +62,13 @@ export default function App() {
             </div>
             <div
               style={{
-              //  backgroundColor: "green",
+               // backgroundColor: "green",
                 flex: 1,
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
+                marginRight: 25,
               }}
             >
               
@@ -97,10 +98,11 @@ export default function App() {
                     </Grid>
                   </Typography>
                 </FormGroup>
+                
               </div>
             </div>
           </div>
-          <hr />
+          <hr style={{marginBottom: 30, border: "1px dotted #f0f5f5"}}/>
 
           <Redirect to="/massages" />
 
@@ -108,9 +110,9 @@ export default function App() {
             <MassagesRoute />
           </Route>
 
-          <Route path="/contacts">
+          {/* <Route path="/contacts">
             <Contacts />
-          </Route>
+          </Route> */}
         </div>
       </Router>
     </IntlProvider>
@@ -129,60 +131,3 @@ function MassagesRoute() {
   );
 }
 
-function Contacts() {
-  const diplomas = [
-    require("./components/Massages/media/diploma(1).jpg"),
-    require("./components/Massages/media/diploma(2).jpg"),
-    require("./components/Massages/media/diploma(3).jpg"),
-    require("./components/Massages/media/diploma(4).jpg"),
-  ];
-  return (
-    <div
-      style={{
-        marginTop: 80,
-        padding: 15,
-      }}
-    >
-      <div
-        style={{
-          flexDirection: "row",
-          display: "flex",
-        }}
-      >
-        <div
-          style={{
-            height: 100,
-          }}
-        >
-          <img
-            style={{
-              maxWidth: 100,
-            }}
-            src={avatar}
-            alt="Avatar"
-          />
-        </div>
-
-        <div
-          style={{
-            marginLeft: 10,
-          }}
-        >
-          <h1 style={{ marginTop: 1 }}>
-            <FormattedMessage id="Evgeny Soltynchuk "/>
-            </h1>
-          <h2>Email: bigmavr5@gmail.com</h2>
-          <h3>
-            <FormattedMessage id="Phone: +38 093 110 44 35; +38 066 118 16 08;"/>
-            </h3>
-        </div>
-      </div>
-
-      <Masonry brakePoints={brakePoints}>
-        {diplomas.map((image, id) => {
-          return <Tile src={image} />;
-        })}
-      </Masonry>
-    </div>
-  );
-}

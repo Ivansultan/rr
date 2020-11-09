@@ -30,7 +30,7 @@ export type MassageList = { [M in MassageType]: Massage };
 
 type Props = {};
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
     margin: 5,
@@ -236,6 +236,7 @@ export const Massages = (props: Props) => {
 
   const [open, setOpen] = React.useState(false);
 
+
   const [activeMassage, setActiveMassage] = React.useState<Massage | undefined>(
     undefined
   );
@@ -246,7 +247,8 @@ export const Massages = (props: Props) => {
     setActiveMassage(massage);
   };
 
-  console.log("activeMassage?.images", activeMassage?.images);
+
+ // console.log("activeMassage?.images", activeMassage?.images);
 
   return (
     <div
@@ -265,8 +267,10 @@ export const Massages = (props: Props) => {
               display: "flex",
               justifyContent: "space-around",
               width: 300,
+              marginBottom: 30
             }}
             className={classes.root}
+            
           >
             <CardActionArea onClick={() => handleCardInfo(massage)}>
               <Typography
@@ -315,10 +319,15 @@ export const Massages = (props: Props) => {
               {activeMassage?.title}
             </h2>
 
-            <div style={{ paddingLeft: 10, paddingRight: 10 }}>
+            <div style={{ paddingLeft: 10, paddingRight: 10, paddingBottom: 20 }}>
               {activeMassage?.description}
             </div>
+
+            <div style={{paddingBottom: 20}}>
             <MasonryLayout images={activeMassage?.images! ?? []} />
+            </div>
+
+           
 
             <div>
               {activeMassage?.extraInfo.map((info) => {
