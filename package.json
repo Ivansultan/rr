@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -b master -d build ",
+    "deploy": "gh-pages -d build ",
     "trans:extract": "yarn formatjs extract ./src/**/*.tsx --out-file ./src/translations/source.json --extract-from-format-message-call",
     "trans:compile_ru": "yarn formatjs compile ./src/translations/source.json --format ./src/translations/compile_ru.js --out-file ./src/translations/ru.json",
     "trans:compile_en": "yarn formatjs compile ./src/translations/source.json --format ./src/translations/compile_en.js --out-file ./src/translations/en.json",

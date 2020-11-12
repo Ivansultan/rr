@@ -1,18 +1,11 @@
-.masonry-container {
-    /* width: 80%; */
-    /* margin: auto; */
+ .masonry-container {
+     
     margin-right: 50px;
     margin-left: 50px;
     margin-top: 10px;
-    /* border: 1px solid rgba(0, 0, 0, 0.1);*/
     background-color: white;
-}
+} 
 
-/* .masonry-container p {
-    text-align: center;
-    padding: 4px;
-    font-family: monospace;
-} */
 
 .masonry {
     display: -webkit-box;
@@ -25,9 +18,9 @@
     align-content: stretch;
     width: 100%;
     margin: auto;
-}
+} 
 
-.column {
+ .column {
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -38,15 +31,16 @@
     align-content: stretch;
     -webkit-box-flex: 1;
     flex-grow: 1;
-}
+} 
 
-.tile {
+ .tile {
     margin: 4px;
-}
+} 
 
-.tile img {
+ .tile img {
     box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     width: 100%;
 
-}
+} 
+

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 
 let brakePoints = [350, 500, 750];
@@ -13,21 +13,23 @@ type Props = {
   images: any[];
 };
 
-class MasonryLayout extends React.Component<Props> {
-  render() {
+
+
+function MasonryLayout(props: { images: any[]; }) {
+
     return (
       <div className="container">
         <div className="masonry-container">
 
           <Masonry brakePoints={brakePoints}>
-            {this.props.images.map((image, id) => {
+            {props.images.map((image, id) => {
               return <Tile src={image} />;
             })}
           </Masonry>
         </div>
       </div>
     );
-  }
+  
 }
 
 type TileProps = {
@@ -35,6 +37,7 @@ type TileProps = {
 };
 
 export const Tile = ({ src }: TileProps) => {
+
   return (
     <div className="tile">
       <img src={src} alt="" />
@@ -52,75 +55,85 @@ type MasonryState = {
   columns: number;
 };
 
-export class Masonry extends React.Component<MasonryProps, MasonryState> {
-  refs: any;
+export const Masonry = (props: MasonryProps) => {
+  // refs: any;
 
-  constructor(props: MasonryProps) {
-    super(props);
-    this.state = {
-      columns: 1,
-    };
-    this.onResize = this.onResize.bind(this);
-  }
-  componentDidMount() {
-    this.onResize();
-    window.addEventListener("resize", this.onResize);
-  }
+  // constructor(props: MasonryProps) {
+  //   super(props);
+  //   this.state = {
+  //     columns: 1,
+  //   };
+  //   this.onResize = this.onResize.bind(this);
+  // }
 
-  getColumns(w: number) {
+  // componentDidMount() {
+  //   this.onResize();
+  //   window.addEventListener("resize", this.onResize);
+  // }
+
+  const [columns, setColumns] = useState<number>(1)
+  useEffect(
+    () => {
+      onResize();
+      window.addEventListener("resize", onResize);
+    }, 
+    []
+    )
+
+  const ref = useRef(null)
+
+  const getColumns = (w: number) => {
     return (
-      this.props.brakePoints.reduceRight((p, c, i) => {
+      props.brakePoints.reduceRight((p, c, i) => {
         return c < w ? p : i;
-      }, this.props.brakePoints.length) + 1
+      }, props.brakePoints.length) + 1
     );
   }
 
-  onResize() {
-    console.log("this.refs.Masonry.offsetWidth", this.refs.Masonry.offsetWidth);
-    const columns = this.getColumns(this.refs.Masonry.offsetWidth);
+  const onResize = () => {
+    console.log(ref)
+    const _columns = getColumns((ref!.current! as any).offsetWidth);
     console.log("colums", columns);
-    if (columns !== this.state.columns) {
-      this.setState({
-        columns: columns,
-      });
+    if (_columns !== columns) {
+      setColumns(_columns)
     }
   }
 
-  mapChildren(): any[] {
+
+  const mapChildren = (): any[]  => {
     let col = [];
-    const numC = this.state.columns;
+    const numC = columns;
     for (let i = 0; i < numC; i++) {
       col.push([]);
     }
     // @ts-ignore
-    return (this.props.children as any).reduce((p, c, i) => {
+    return (props.children as any).reduce((p, c, i) => {
       p[i % numC].push(c);
 
       return p;
     }, col);
   }
 
-  render() {
-    return (
-      <div className="masonry" ref="Masonry">
-        {this.mapChildren().map((col, ci) => {
-          return (
-            <div className="column" key={ci}>
-              {col.map(
-                // @ts-ignore
-                (child, i) => {
-                  return <div style={{
-                     borderRadius: 20,
-                    ...this.props.cardStyle
-                  }} key={i}> {child} </div>;
-                }
-              )}
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
+
+  return (
+    <div className="masonry" ref={ref}>
+      {mapChildren().map((col, ci) => {
+        return (
+          <div className="column" key={ci}>
+            {col.map(
+              // @ts-ignore
+              (child, i) => {
+                return <div style={{
+                  borderRadius: 20, 
+                  ...props.cardStyle
+                }} key={i}> {child} </div>;
+              }
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default MasonryLayout;
