@@ -59,9 +59,9 @@ export default function App() {
           >
             <img
               alt="jensHand2"
-              src={require("./components/Massages/media/jensHand2.png")}
-             // width="60"
-              width="100"
+              src={require("./components/Massages/media/jensHand.png")}
+              width="60"
+             // width="100"
             />
           </div>
           <div
