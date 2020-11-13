@@ -2,14 +2,14 @@ import React, { useReducer } from "react";
 import { About } from "./components/About/About";
 
 import { Massages } from "./components/Massages/Massages";
-import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import FormGroup from "@material-ui/core/FormGroup";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import Russian from "./translations/ru.json";
 import English from "./translations/en.json";
-import Contacts from "./components/Contacts";
+import Contacts from "./components/Contacts/Contacts";
+import { useStyles } from "./stylesApp";
 
 type Locale = "en" | "ru";
 
@@ -48,46 +48,29 @@ const languages: Language[] = [
 export default function App() {
   const [state, dispatch] = useReducer(reducer, { locale: "en" });
 
+  const classes = useStyles();
+
   const { locale } = state;
   return (
     <IntlProvider locale={locale} messages={messages[locale]}>
       <div>
         <div
-          style={{
-            // backgroundColor: "gray",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
+          className={classes.headLineContainer}
         >
           <div
-            style={{
-              // backgroundColor: "red",
-              marginLeft: 25,
-            }}
-            onClick={() => {
-              alert("Redirect to home page");
-            }}
+            className={classes.logo}
+            
           >
             <img
-              alt="jestHand"
+              alt="jensHand"
               src={require("./components/Massages/media/jensHand.png")}
               width="60"
             />
           </div>
           <div
-            style={{
-              // backgroundColor: "green",
-              flex: 1,
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              marginRight: 25,
-            }}
+            className={classes.titleContainer}
           >
-            <h1 style={{ textAlign: "center", marginTop: 7, marginBottom: 7 }}>
+            <h1 className={classes.title}>
               <FormattedMessage id="Massage to relax and rehab" />
             </h1>
 
@@ -109,7 +92,8 @@ export default function App() {
                             cursor: isActiveLocale
                                 ? "default"
                                 : "pointer",
-                            fontWeight: isActiveLocale ? "bold" : "normal"
+                            fontWeight: isActiveLocale ? "bold" : "normal",
+                            textDecoration: isActiveLocale ? "underLine" : "",
                           }}
                           onClick={() => {
                             if (!isActiveLocale) {
@@ -130,7 +114,7 @@ export default function App() {
             </div>
           </div>
         </div>
-        <hr style={{ marginBottom: 30, border: "1px dotted #f0f5f5" }} />
+        <hr className={classes.delimiter} />
       </div>
       <Massages />
       <About />

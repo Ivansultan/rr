@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 
@@ -56,20 +57,6 @@ type MasonryState = {
 };
 
 export const Masonry = (props: MasonryProps) => {
-  // refs: any;
-
-  // constructor(props: MasonryProps) {
-  //   super(props);
-  //   this.state = {
-  //     columns: 1,
-  //   };
-  //   this.onResize = this.onResize.bind(this);
-  // }
-
-  // componentDidMount() {
-  //   this.onResize();
-  //   window.addEventListener("resize", this.onResize);
-  // }
 
   const [columns, setColumns] = useState<number>(1)
   useEffect(

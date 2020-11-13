@@ -4,7 +4,6 @@ import {
   CardContent,
   Typography,
   CardMedia,
-  makeStyles,
   CardActionArea,
 } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
@@ -12,6 +11,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import MasonryLayout from "../MasonryLayout/MasonryLayout";
 import { FormattedMessage } from "react-intl";
+import { useStyles } from "./styles";
 
 export type MassageType = "japanese" | "vietnamese" | "relaxing" | "visceral";
 type ExtraInfo = {
@@ -29,50 +29,6 @@ export type Massage = {
 export type MassageList = { [M in MassageType]: Massage };
 
 type Props = {};
-
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: 275,
-    margin: 5,
-    cursor: "pointer",
-  },
-  bullet: {
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-    textAlign: "center",
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  media: {
-    paddingTop: "56.25%", // 16:9
-    height: "100%",
-    width: "100%",
-  },
-  img: {
-    height: 150,
-    width: 150,
-  },
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "transparent",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-
-    overflow: "scroll",
-    height: 500,
-    maxWidth: 600,
-  },
-}));
 
 export const Massages = (props: Props) => {
   const massagesData: MassageList = {
@@ -247,30 +203,14 @@ export const Massages = (props: Props) => {
     setActiveMassage(massage);
   };
 
-
- // console.log("activeMassage?.images", activeMassage?.images);
-
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        maxHeight: "100%",
-        flexWrap: "wrap",
-      }}
+      className={classes.cardsContainer}
     >
       {Object.values(massagesData).map((massage) => {
         return (
           <Card
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              width: 300,
-              marginBottom: 30
-            }}
-            className={classes.root}
-            
+            className={classes.card}
           >
             <CardActionArea onClick={() => handleCardInfo(massage)}>
               <Typography
@@ -313,17 +253,17 @@ export const Massages = (props: Props) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2
-              style={{ justifyContent: "center", display: "flex" }}
+              className={classes.modalTitle}
               id="transition-modal-title"
             >
               {activeMassage?.title}
             </h2>
 
-            <div style={{ paddingLeft: 10, paddingRight: 10, paddingBottom: 20 }}>
+            <div className={classes.modalDescription}>
               {activeMassage?.description}
             </div>
 
-            <div style={{paddingBottom: 20}}>
+            <div className={classes.modalImages}>
             <MasonryLayout images={activeMassage?.images! ?? []} />
             </div>
 
@@ -333,7 +273,7 @@ export const Massages = (props: Props) => {
               {activeMassage?.extraInfo.map((info) => {
                 console.log("info", info);
                 return (
-                  <div style={{ paddingLeft: 10, paddingRight: 10 }}>
+                  <div className={classes.modalExtraInfo}>
                     {info.title}
                     <ol>
                       {info.items.map((item) => {
