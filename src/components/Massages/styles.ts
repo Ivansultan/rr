@@ -19,7 +19,6 @@ export const useStyles = makeStyles((theme) => ({
     },
     media: {
       paddingTop: "56.25%", // 16:9
-      height: "100%",
       width: "100%",
     },
     img: {

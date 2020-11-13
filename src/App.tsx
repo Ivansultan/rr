@@ -1,10 +1,6 @@
 import React, { useReducer } from "react";
 import { About } from "./components/About/About";
-
 import { Massages } from "./components/Massages/Massages";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import FormGroup from "@material-ui/core/FormGroup";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import Russian from "./translations/ru.json";
 import English from "./translations/en.json";
@@ -62,9 +58,10 @@ export default function App() {
             
           >
             <img
-              alt="jensHand"
-              src={require("./components/Massages/media/jensHand.png")}
-              width="60"
+              alt="jensHand2"
+              src={require("./components/Massages/media/jensHand2.png")}
+             // width="60"
+              width="100"
             />
           </div>
           <div
@@ -74,15 +71,8 @@ export default function App() {
               <FormattedMessage id="Massage to relax and rehab" />
             </h1>
 
-            <div>
-              <FormGroup>
-                <Typography component="div">
-                  <Grid
-                    component="label"
-                    container
-                    alignItems="center"
-                    spacing={1}
-                  >
+            <div className={classes.switcher}>
+              
                     {languages.map((language) => {
                       const isActiveLocale = language.locale === state.locale
                       return (
@@ -93,7 +83,7 @@ export default function App() {
                                 ? "default"
                                 : "pointer",
                             fontWeight: isActiveLocale ? "bold" : "normal",
-                            textDecoration: isActiveLocale ? "underLine" : "",
+                            textDecoration: isActiveLocale ? "" : "underLine",
                           }}
                           onClick={() => {
                             if (!isActiveLocale) {
@@ -108,9 +98,7 @@ export default function App() {
                         </div>
                       );
                     })}
-                  </Grid>
-                </Typography>
-              </FormGroup>
+                 
             </div>
           </div>
         </div>

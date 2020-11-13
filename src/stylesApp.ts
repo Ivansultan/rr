@@ -28,6 +28,11 @@ title: {
     marginBottom: 7, 
   },
 
+  switcher: {
+    display: "flex", 
+    flexDirection: "row"
+  },
+
 delimiter: { 
     marginBottom: 30, 
     border: "1px dotted #f0f5f5" 
