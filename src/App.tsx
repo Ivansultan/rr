@@ -42,7 +42,7 @@ const languages: Language[] = [
 ];
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, { locale: "en" });
+  const [state, dispatch] = useReducer(reducer, { locale: "ru" });
 
   const classes = useStyles();
 
