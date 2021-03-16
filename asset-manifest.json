@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.a5529174.chunk.css",
+    "main.css": "/static/css/main.59feafe3.chunk.css",
     "main.js": "/static/js/main.83b494d4.chunk.js",
     "main.js.map": "/static/js/main.83b494d4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.26944662.js",
@@ -8,12 +8,12 @@
     "static/js/2.8380d47e.chunk.js": "/static/js/2.8380d47e.chunk.js",
     "static/js/2.8380d47e.chunk.js.map": "/static/js/2.8380d47e.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.f04ade72e49e3d30b786eaf8a2bb4e81.js": "/precache-manifest.f04ade72e49e3d30b786eaf8a2bb4e81.js",
+    "precache-manifest.91275e3cdfd5ea39139852fe5eeb22fc.js": "/precache-manifest.91275e3cdfd5ea39139852fe5eeb22fc.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.a5529174.chunk.css.map": "/static/css/main.a5529174.chunk.css.map",
+    "static/css/main.59feafe3.chunk.css.map": "/static/css/main.59feafe3.chunk.css.map",
     "static/js/2.8380d47e.chunk.js.LICENSE.txt": "/static/js/2.8380d47e.chunk.js.LICENSE.txt",
     "static/media/about.jpg": "/static/media/about.febc8068.jpg",
-    "static/media/index.css": "/static/media/background2.83b1648c.jpg",
+    "static/media/index.css": "/static/media/backgroundFinale.2c1acbff.jpg",
     "static/media/contacts.png": "/static/media/contacts.809234ff.png",
     "static/media/diploma(1).jpg": "/static/media/diploma(1).ec9769b1.jpg",
     "static/media/diploma(2).jpg": "/static/media/diploma(2).2ac2fe23.jpg",
@@ -40,7 +40,7 @@
   "entrypoints": [
     "static/js/runtime-main.26944662.js",
     "static/js/2.8380d47e.chunk.js",
-    "static/css/main.a5529174.chunk.css",
+    "static/css/main.59feafe3.chunk.css",
     "static/js/main.83b494d4.chunk.js"
   ]
 }
