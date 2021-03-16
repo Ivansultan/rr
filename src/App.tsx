@@ -104,6 +104,25 @@ export default function App() {
         </div>
         <hr className={classes.delimiter} />
       </div>
+      
+      <div style={{marginLeft: 25, display: 'flex'}}>
+        <img style={{maxWidth: 150, borderRadius: 5, display: 'flex', flexWrap: 'wrap'}}
+            alt="about"
+            src={require("../src/images/about.jpg")}
+        />
+        <div style={{marginLeft: 25}}>
+          <p>
+            Текст
+          </p>
+        </div>
+      </div>
+
+      <div style={{marginLeft: 25}}>
+        <p>
+          Текст
+        </p>
+      </div>
+
       <Massages />
       <About />
       <Contacts />
