@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.b451ded2.chunk.css",
-    "main.js": "/static/js/main.517d52cf.chunk.js",
-    "main.js.map": "/static/js/main.517d52cf.chunk.js.map",
+    "main.js": "/static/js/main.e59ac2e7.chunk.js",
+    "main.js.map": "/static/js/main.e59ac2e7.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.26944662.js",
     "runtime-main.js.map": "/static/js/runtime-main.26944662.js.map",
-    "static/js/2.8380d47e.chunk.js": "/static/js/2.8380d47e.chunk.js",
-    "static/js/2.8380d47e.chunk.js.map": "/static/js/2.8380d47e.chunk.js.map",
+    "static/js/2.df9f2c10.chunk.js": "/static/js/2.df9f2c10.chunk.js",
+    "static/js/2.df9f2c10.chunk.js.map": "/static/js/2.df9f2c10.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.300cb44bd36a1253d2b9b000ec2891e5.js": "/precache-manifest.300cb44bd36a1253d2b9b000ec2891e5.js",
+    "precache-manifest.34f4dfbdb1d41efb96bb6c947da6d06b.js": "/precache-manifest.34f4dfbdb1d41efb96bb6c947da6d06b.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.b451ded2.chunk.css.map": "/static/css/main.b451ded2.chunk.css.map",
-    "static/js/2.8380d47e.chunk.js.LICENSE.txt": "/static/js/2.8380d47e.chunk.js.LICENSE.txt",
+    "static/js/2.df9f2c10.chunk.js.LICENSE.txt": "/static/js/2.df9f2c10.chunk.js.LICENSE.txt",
     "static/media/about.jpg": "/static/media/about.febc8068.jpg",
     "static/media/contacts.png": "/static/media/contacts.809234ff.png",
     "static/media/diploma(1).jpg": "/static/media/diploma(1).ec9769b1.jpg",
@@ -34,12 +34,14 @@
     "static/media/visceral(1).jpg": "/static/media/visceral(1).e2338929.jpg",
     "static/media/visceral(2).jpg": "/static/media/visceral(2).ab77649c.jpg",
     "static/media/visceral(3).jpg": "/static/media/visceral(3).dcf54cc0.jpg",
-    "static/media/visceral(4).jpg": "/static/media/visceral(4).a795e248.jpg"
+    "static/media/visceral(4).jpg": "/static/media/visceral(4).a795e248.jpg",
+    "static/media/yumeiho.png": "/static/media/yumeiho.2b719b80.png",
+    "static/media/yumeiho2.jpg": "/static/media/yumeiho2.fca538c6.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.26944662.js",
-    "static/js/2.8380d47e.chunk.js",
+    "static/js/2.df9f2c10.chunk.js",
     "static/css/main.b451ded2.chunk.css",
-    "static/js/main.517d52cf.chunk.js"
+    "static/js/main.e59ac2e7.chunk.js"
   ]
 }
